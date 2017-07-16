@@ -1,0 +1,96 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.css";
+
+.top-nav {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 8px;
+}
+
+.spacer {
+    margin: 10px;
+}
+
+.formarea {
+    border: 3px solid #595959;
+    margin: 10px;
+    padding: 10px;
+    background-image: url("assets/images/parchment2.jpg");
+}
+.centered-pic {
+    display: block;
+    margin: 0 auto;
+}
+.pic-border {
+        border: 3px solid #595959;
+}
+
+.selectable-item {
+    border: 3px solid #595959;
+    margin: 10px;
+    display: inline-block;
+    position: relative;
+}
+
+.text-overlay {
+    position: absolute;
+  height: 30%;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  font-size: 30px;
+  color: white;
+  text-shadow: 2px 2px Black;
+}
+
+.backdrop2 {
+    background-image: url("assets/images/backgrounds/background.jpg");
+    background-size:cover;
+    z-index: -1;
+    width:100%; 
+    height:100%;
+}
+.backdrop {
+    background-image: url("assets/images/backgrounds/background.jpg");
+    background-size:cover;
+    z-index: -1;
+}
+.full{
+        position:absolute; top:90; left:0; width:100%; height:100%;
+}
+
+.containerBox {
+  position: relative;
+  display: inline-block;
+}
+
+.text-box {
+  position: absolute;
+  height: 30%;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  font-size: 30px;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: 120px;
+  margin: auto;
+  padding: auto;
+}
+
+.dataNumber {
+  margin-top: auto;
+}

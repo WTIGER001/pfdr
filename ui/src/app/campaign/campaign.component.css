@@ -1,0 +1,33 @@
+.unselected {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+     filter: grayscale(100%);
+}
+.debug {
+    border: 1px solid black
+}
+.campaign-pic {
+    display: block;
+    margin: 0 auto;
+}
+.center-block {
+    display: block;
+    margin: 0 auto;
+}
+.center {
+    text-align: center
+}
+label.center {
+    display: block;
+    text-align: center;
+}
+.pointer {
+    cursor: pointer
+}
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}

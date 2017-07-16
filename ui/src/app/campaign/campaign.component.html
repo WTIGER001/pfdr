@@ -1,0 +1,76 @@
+<!-- Characters Section -->
+<app-campaign-nav></app-campaign-nav>
+
+<div class="backdrop full"> </div>
+
+<div class="spacer formarea">
+  <h1>Campaign</h1>
+  <div class="row ">
+    <div class="col-sm-12 ">
+      <div class="row ">
+        <div class="col-8 col-sm-9 ">
+          <div class="form-group row">
+            <label for="example-search-input" class="col-2 col-form-label">Name</label>
+            <div class="col-8">
+              <input name="name" class="form-control" type="text" [(ngModel)]="campaign.name">
+            </div>
+            <div class="col-2">
+              <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" [(ngModel)]="campaign.shared">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Shared</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">GameMasters: </label>
+            <div class="col-10">
+              <tag-input name="gamemasters" theme='bootstrap' [(ngModel)]="campaign.gameMasters" [onRemoving]="onRemoving" [separatorKeys]="separatorKeys"
+                [dragZone]="'zone1'" [placeholder]="'Add'"></tag-input>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Players:</label>
+            <div class="col-10">
+              <tag-input name="players" theme='bootstrap' [placeholder]="'Add'" [separatorKeys]="separatorKeys" [(ngModel)]="campaign.players"
+                [onRemoving]="onRemoving" [dragZone]="'zone1'"></tag-input>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="description" class="col-2 col-form-label">Description</label>
+            <div class="col-10">
+              <app-tinymce [(ngModel)]='campaign.description'></app-tinymce>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-4 col-sm-3">
+          <h4 class="center">Campaign Picture</h4>
+          <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".png,.jpg" id="file" class="inputfile">
+          <img class="pic-border campaign-pic" src="assets/images/campaign.jpg" width="250">
+          <label class="center pointer" for="file">Change Picture</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form>
+    <div class="col-8 tile">
+
+    </div>
+
+  </form>
+</div>
+
+<div class="spacer formarea">
+  <h1>Rule Books ({{campaign.rulebooks.length}} selected)</h1>
+  <div class="list-items">
+    <div class="selectable-item" *ngFor="let book of db.rulebooks" (click)="selectBook(book)">
+      <img src="{{book.image}}" width="150" [ngClass]="{'unselected': notSelected(book)}">
+      <div class="text-overlay"><i class="fa fa-check fa-2x" aria-hidden="true" [hidden]="notSelected(book)"></i></div>
+    </div>
+  </div>
+</div>
