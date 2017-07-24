@@ -1,0 +1,358 @@
+{
+    "attributes": [
+        {
+            "key": "STR",
+            "name": "Strength",
+            "attribute_type": "Ability"
+        },
+        {
+            "key": "DEX",
+            "name": "Dexterity",
+            "attribute_type": "Ability"
+        },
+        {
+            "key": "CON",
+            "name": "Constitution",
+            "attribute_type": "Ability"
+        },
+        {
+            "key": "INT",
+            "name": "Intelligence",
+            "attribute_type": "Ability"
+        },
+        {
+            "key": "WIS",
+            "name": "Wisdom",
+            "attribute_type": "Ability"
+        },
+        {
+            "key": "CHA",
+            "name": "Charisma",
+            "attribute_type": "Ability"
+        },
+        {
+            "key": "FORT",
+            "name": "Fortitude",
+            "attribute_type": "Save"
+        },
+        {
+            "key": "REF",
+            "name": "Reflexes",
+            "attribute_type": "Save"
+        },
+        {
+            "key": "WILL",
+            "name": "Willpower",
+            "attribute_type": "Save"
+        },
+        {
+            "key": "AC",
+            "name": "Armor Class",
+            "attribute_type": "???"
+        },
+        {
+            "key": "AC_TOUCH",
+            "name": "Armor Class (Touch)",
+            "attribute_type": "???"
+        },
+        {
+            "key": "AC_FLAT_FOOTED",
+            "name": "Armor Class (Flat Footed)",
+            "attribute_type": "???"
+        },
+        {
+            "key": "SIZE",
+            "name": "Size",
+            "attribute_type": "Size"
+        },
+        {
+            "key": "SPEED",
+            "name": "Speed",
+            "attribute_type": "Speed"
+        },
+        {
+            "key": "BAB",
+            "name": "Base Attack Bonus",
+            "attribute_type": "Attack"
+        },
+        {
+            "key": "RAB",
+            "name": "Base Attack Bonus (Ranged)",
+            "attribute_type": "Attack"
+        },
+        {
+            "key": "CMD",
+            "name": "Combat Manuever Defense",
+            "attribute_type": "Derived"
+        },
+        {
+            "key": "CMB",
+            "name": "Combat Manuever Bonus",
+            "attribute_type": "Derived"
+        },
+        {
+            "key": "INIT",
+            "name": "Initiative",
+            "attribute_type": "Derived"
+        }
+    ],
+    "effects": [
+        {
+            "attr": "STR_MOD",
+            "bonus": "ABILITY_MOD[STR]"
+        },
+        {
+            "attr": "DEX_MOD",
+            "bonus": "ABILITY_MOD[DEX]"
+        },
+        {
+            "attr": "CON_MOD",
+            "bonus": "ABILITY_MOD[CON]"
+        },
+        {
+            "attr": "INT_MOD",
+            "bonus": "ABILITY_MOD[INT]"
+        },
+        {
+            "attr": "WIS_MOD",
+            "bonus": "ABILITY_MOD[WIS]"
+        },
+        {
+            "attr": "CHA_MOD",
+            "bonus": "ABILITY_MOD[CHA]",
+            "lookup": [
+                {
+                    "from": "0",
+                    "to": "0",
+                    "result": "-6"
+                },
+                {
+                    "from": "1",
+                    "to": "1",
+                    "result": "-5"
+                },
+                {
+                    "from": "2",
+                    "to": "3",
+                    "result": "-4"
+                },
+                {
+                    "from": "4",
+                    "to": "5",
+                    "result": "-3"
+                },
+                {
+                    "from": "6",
+                    "to": "7",
+                    "result": "-2"
+                },
+                {
+                    "from": "8",
+                    "to": "9",
+                    "result": "-1"
+                },
+                {
+                    "from": "10",
+                    "to": "11",
+                    "result": "0"
+                },
+                {
+                    "from": "12",
+                    "to": "13",
+                    "result": "1"
+                },
+                {
+                    "from": "14",
+                    "to": "15",
+                    "result": "2"
+                },
+                {
+                    "from": "16",
+                    "to": "17",
+                    "result": "3"
+                },
+                {
+                    "from": "18",
+                    "to": "19",
+                    "result": "4"
+                },
+                {
+                    "from": "20",
+                    "to": "21",
+                    "result": "5"
+                },
+                {
+                    "from": "22",
+                    "to": "23",
+                    "result": "6"
+                },
+                {
+                    "from": "24",
+                    "to": "25",
+                    "result": "7"
+                },
+                {
+                    "from": "26",
+                    "to": "27",
+                    "result": "8"
+                },
+                {
+                    "from": "28",
+                    "to": "29",
+                    "result": "9"
+                },
+                {
+                    "from": "30",
+                    "to": "31",
+                    "result": "10"
+                },
+                {
+                    "from": "32",
+                    "to": "33",
+                    "result": "11"
+                }
+            ]
+        }
+    ],
+    "variables": [
+        {
+            "name": "MODS",
+            "type": "lookup",
+            "value": [
+                {
+                    "from": "0",
+                    "to": "0",
+                    "result": "-6"
+                },
+                {
+                    "from": "1",
+                    "to": "1",
+                    "result": "-5"
+                },
+                {
+                    "from": "2",
+                    "to": "3",
+                    "result": "-4"
+                },
+                {
+                    "from": "4",
+                    "to": "5",
+                    "result": "-3"
+                },
+                {
+                    "from": "6",
+                    "to": "7",
+                    "result": "-2"
+                },
+                {
+                    "from": "8",
+                    "to": "9",
+                    "result": "-1"
+                },
+                {
+                    "from": "10",
+                    "to": "11",
+                    "result": "0"
+                },
+                {
+                    "from": "12",
+                    "to": "13",
+                    "result": "1"
+                },
+                {
+                    "from": "14",
+                    "to": "15",
+                    "result": "2"
+                },
+                {
+                    "from": "16",
+                    "to": "17",
+                    "result": "3"
+                },
+                {
+                    "from": "18",
+                    "to": "19",
+                    "result": "4"
+                },
+                {
+                    "from": "20",
+                    "to": "21",
+                    "result": "5"
+                },
+                {
+                    "from": "22",
+                    "to": "23",
+                    "result": "6"
+                },
+                {
+                    "from": "24",
+                    "to": "25",
+                    "result": "7"
+                },
+                {
+                    "from": "26",
+                    "to": "27",
+                    "result": "8"
+                },
+                {
+                    "from": "28",
+                    "to": "29",
+                    "result": "9"
+                },
+                {
+                    "from": "30",
+                    "to": "31",
+                    "result": "10"
+                },
+                {
+                    "from": "32",
+                    "to": "33",
+                    "result": "11"
+                }
+            ]
+        },
+        {
+            "name": "ABILITY_MOD",
+            "type": "array",
+            "value": [
+                -6,
+                -5,
+                -4,
+                -4,
+                -3,
+                -3,
+                -2,
+                -2,
+                -1,
+                -1,
+                0,
+                0,
+                1,
+                1,
+                2,
+                2,
+                3,
+                3,
+                4,
+                4,
+                5,
+                5,
+                6,
+                6,
+                7,
+                7,
+                8,
+                8,
+                9,
+                9,
+                10,
+                10,
+                11,
+                11,
+                12,
+                12,
+                13
+            ]
+        }
+    ]
+}

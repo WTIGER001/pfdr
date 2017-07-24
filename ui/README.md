@@ -62,9 +62,88 @@ Campaign
 - Game Log
 - History
 
+## Effect Calculation Engine
 
+There are lots of concepts in the game that requires bonuses, limits and calculations be performed to generate the correct end results. This secion defines the basic idea behind the calculation engine, design decisions and the object model. 
 
+### Terms
 
+* **Effect Definition** - Provides a definition for an effect. The defintion contains the constant effects or conditional effects. A conditional effect is defined with a formula. 
+* **Effect** - The results of an Effect Definition that is applied
+* **User Choice** - Some effect definitions require the user to select an option. For instance, a simple example is the Human choice on which ability score recieves a +2. The Effect Definition includes this choice but the Effect does not.
+* **Effect Target** - A target is any value in the game that can have effects applied to it. There are multiple types of targets from ability scores to skill ranks. Each target is uniquely identified by a key. Some targets apply to categories of targets. Each category also has a key. 
+* **Value** - A simple value holder
+* **CompositeValue** - A mmore complex value holder
+
+### Effect Targets
+
+* Ability Scores (Str, Dex, Con, Int, Wis, Cha)
+* Ability Score Mods (Str_mod, Dex_mod, Con_mod, Int_mod, Cha_mod )
+* Saving Throws (Fort, Will, Ref)
+* Skills (Appraise, Intimidate, Knowledge(Dungeonerring), Craft(Armor), etc.)
+* Physical Attribute (Height, Weight)
+* Combat Attributes (HP, HP_TEMP, CMB, CMD, BAB, AC, AC_FLAT, AC_TOUCH)
+* Spell Attributes
+* Levels
+* Skill Categories (DEX, INT, STR, WIS, etc)
+* Gear (Armor_max_dex)
+
+Targets are defined in a JSON file. 
+
+### Models
+
+**EffectDefintion**
+* name - name of the effect definition
+* desc - description
+* url - url to a better description
+* target - the key of the effect target (consider more than 1), case insensitive
+* bonus - a constant scalar bonus (possitive or negative) that is applied or a formula. If the string contains only number then it is assumed to be a scalar
+* limit_min - a value that is used to limit the target. For instance, Armor provides a max-dex
+* limit_max - a value that is used to limit the target. For instance, Armor provides a max-dex
+* when - a formula steting when the effect is conditionally valid. For example, an effect only applies if the character has on medium armor (armor.type = medium) (Better explain) 
+* user-selection - The user selection object
+
+**EffectTarget**
+* key - unique string that identifes this target. This string must be used anywhere in an effect formula. Case-Insensitive
+* name - The name of the target (for users)
+* desc - a description of the Target (for users)
+* priority - the default calculation priority
+
+**Effect**
+* from - name of the effect definition
+* target - unique string that identifes this target. This string must be used anywhere in an effect formula. Case-Insensitive
+* bonus - scalar bonus
+* limit_min  - scalar limit
+* limit_max - Max value allowed
+
+**Value**
+* key - the Key for this value (e.g. STR, STR_MOD,...)
+* raw - the raw value
+* bonus - the sum of all applicable bonuses
+* limit - the limit object (max and min)
+* total - The total, effective value
+
+**CompositeValue** 
+* key - the Key for this value (e.g. AC,...)
+* values - collection of contributing values (map)
+
+### Data Flow
+
+1. Collect all the EffectDefinitions from the character
+2. Validate all the EffectDefinitions to make sure that the formulas and when statements are proper
+3. Sort the EffectDefinitions based on the variables they use
+4. Iteratively evaluate the formulas to generate Effects
+5. Apply the Effects to the Targets
+
+# Notes
+
+* Figure out how to use ex abilities and feats with user selections. Selection types can be weapon name, weapon type, armor type, etc
+
+* Release Skill points 
+* Extra Armor Bonus
+* Limit / Restrict bonuses max(1/4* LVLS, 3)
+* Add "charges" based on level
+* Add a weapon and/or attack
 
 ## Application Design 
 

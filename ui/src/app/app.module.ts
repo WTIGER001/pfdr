@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
+import { TreeModule } from 'angular-tree-component';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -19,6 +20,10 @@ import { CampaignNavComponent } from './campaign-nav/campaign-nav.component';
 import { PcListComponent } from './pc-list/pc-list.component';
 import { ListDetailDialogComponent } from './list-detail-dialog/list-detail-dialog.component';
 import { CharacterComponent } from './character/character.component';
+import { ListDetailComponent } from './utilities/list-detail/list-detail.component';
+import { SkillsComponent } from './character/skills/skills.component';
+import { CalcExplainComponent } from './utilities/calc-explain/calc-explain.component';
+import { TestComponent } from './test/test.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: CampaignListComponent },
@@ -45,7 +50,11 @@ const appRoutes: Routes = [
     CampaignNavComponent,
     PcListComponent,
     ListDetailDialogComponent,
-    CharacterComponent
+    CharacterComponent,
+    ListDetailComponent,
+    SkillsComponent,
+    CalcExplainComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +62,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     TagInputModule,
     BrowserAnimationsModule,
+    TreeModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     TinymceModule.withConfig({

@@ -1,0 +1,953 @@
+{
+    "name": "Fighter",
+    "type": "Base-Class",
+    "desc": "Some take up arms for glory, wealth, or revenge. Others do battle to prove themselves, to protect others, or because they know nothing else. Still others learn the ways of weaponcraft to hone their bodies in battle and prove their mettle in the forge of war. Lords of the battlefield, fighters are a disparate lot, training with many weapons or just one, perfecting the uses of armor, learning the fighting techniques of exotic masters, and studying the art of combat, all to shape themselves into living weapons. Far more than mere thugs, these skilled warriors reveal the true deadliness of their weapons, turning hunks of metal into arms capable of taming kingdoms, slaughtering monsters, and rousing the hearts of armies. Soldiers, knights, hunters, and artists of war, fighters are unparalleled champions, and woe to those who dare stand against them",
+    "role": "Fighters excel at combat—defeating their enemies, controlling the flow of battle, and surviving such sorties themselves. While their specific weapons and methods grant them a wide variety of tactics, few can match fighters for sheer battle prowess.",
+    "alignment": "Any",
+    "hit_die": "d10",
+    "starting_wealth": "5d6 x 10 gp (average 175gp.) In addition, each character begins play with an outfit worth 10 gp or less.",
+    "class_skills": [
+        "climb",
+        "craft",
+        "handle_animal",
+        "intimidate",
+        "knowledge(dungenoneering)",
+        "knowledge(engineering)",
+        "profession",
+        "ride",
+        "survival",
+        "swim"
+    ],
+    "skill_ranks_per_level": 2,
+    "feats": [
+        {
+            "name": "Weapon Proficiency (Simple)"
+        },
+        {
+            "name": "Weapon Proficiency (Martial)"
+        },
+        {
+            "name": "Armor Proficiency (Heavy)"
+        },
+        {
+            "name": "Armor Proficiency (Light)"
+        },
+        {
+            "name": "Armor Proficiency (Medium)"
+        },
+        {
+            "name": "Shield Proficiency (Light)"
+        },
+        {
+            "name": "Shield Proficiency (Medium)"
+        },
+        {
+            "name": "Shield Proficiency (Heavy)"
+        },
+        {
+            "name": "Shield Proficiency (Tower)"
+        }
+    ],
+    "levels": [
+        {
+            "rank": 1,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 1
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 2
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ]
+        },
+        {
+            "rank": 2,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 2
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 1
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 1,
+                    "name": "Bravery"
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 3,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 3
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 0
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 1
+                },
+                {
+                    "attr": "will",
+                    "bonus": 1
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": [
+                {
+                    "name": "Armor Training",
+                    "effects": [
+                        {
+                            "attr": "acp",
+                            "bonus": -1
+                        },
+                        {
+                            "attr": "armor_max_dex",
+                            "bonus": 1
+                        },
+                        {
+                            "attr": "armor_speed",
+                            "bonus": "normal",
+                            "restriction": "armor.type = medium",
+                            "not-accounted-for": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rank": 4,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 4
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 1
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 5,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 5
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 0
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": [
+                {
+                    "name": "Weapon Training",
+                    "effects": [
+                        {
+                            "attr": "bab",
+                            "bonus": 1,
+                            "when": "weapon_type = {SELECTION}"
+                        },
+                        {
+                            "attr": "DMG",
+                            "bonus": 1,
+                            "when": "weapon_type = {SELECTION}"
+                        }
+                    ],
+                    "user-select": {
+                        "desc": "Fighter can select one group of weapons",
+                        "options": [
+                            "Axes",
+                            "Blades, Heavy",
+                            "Blades, Light",
+                            "Bows",
+                            "Close",
+                            "Crossbows",
+                            "Double",
+                            "Firearms",
+                            "Flails",
+                            "Hammers",
+                            "Monk",
+                            "Natural",
+                            "Polearms",
+                            "Siege",
+                            "Spears",
+                            "Thrown"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "rank": 6,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 6
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 1
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 1
+                },
+                {
+                    "attr": "will",
+                    "bonus": 1
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 7,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 7
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 0
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 8,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 8
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 1
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 9,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 9
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 0
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 1
+                },
+                {
+                    "attr": "will",
+                    "bonus": 1
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": [
+                {
+                    "name": "user-selection",
+                    "count": 1,
+                    "choices": []
+                }
+            ]
+        },
+        {
+            "rank": 10,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 10
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 1
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 11,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 11
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 0
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 12,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 12
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 1
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 1
+                },
+                {
+                    "attr": "will",
+                    "bonus": 1
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 13,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 13
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 0
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 14,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 14
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 1
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 15,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 15
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 0
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 1
+                },
+                {
+                    "attr": "will",
+                    "bonus": 1
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 16,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 16
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 1
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 17,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 17
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 0
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 18,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 18
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 1
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 1
+                },
+                {
+                    "attr": "will",
+                    "bonus": 1
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 19,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 19
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 0
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        },
+        {
+            "rank": 20,
+            "bonuses": [
+                {
+                    "attr": "bab",
+                    "bonus": 20
+                },
+                {
+                    "attr": "fort",
+                    "bonus": 1
+                },
+                {
+                    "attr": "ref",
+                    "bonus": 0
+                },
+                {
+                    "attr": "will",
+                    "bonus": 0
+                }
+            ],
+            "feats": [
+                {
+                    "type": "bonus",
+                    "available": "ALL_COMBAT"
+                }
+            ],
+            "extraordinary": []
+        }
+    ],
+    "available-extraordinary-abilities": [
+        {
+            "name": "Adaptable Training",
+            "description": "The fighter can use his base attack bonus in place of his ranks in one skill of his choice from the following list: Acrobatics, Climb, Disguise, Escape Artist, Intimidate, Knowledge (engineering), Profession (soldier), Ride, or Swim. The fighter need not be wearing armor or using a shield to use this option. When using adaptable training, the fighter substitutes his total base attack bonus (including his base attack bonus gained through levels in other classes) for his ranks in this skill, but adds the skill’s usual ability score modifier and any other bonuses or penalties that would modify that skill. Once a skill has been selected, it cannot be changed and the fighter can immediately retrain all of his ranks in the selected skill at no additional cost in money or time. In addition, the fighter adds all skills chosen with this option to his list of class skills. A fighter can choose this option up to four times.",
+            "effects": [
+                {
+                    "attr": "{SELECTION}.ranks",
+                    "bonus": "BAB",
+                    "effect_type": "SKILL RANKS REPLACED",
+                    "user-selection": [
+                        "Acrobatics",
+                        "Climb",
+                        "Disguise",
+                        "Escape Artist",
+                        "Intimidate",
+                        "Knowledge (engineering)",
+                        "Profession (soldier)",
+                        "Ride",
+                        "Swim"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Armor Specialization",
+            "description": "The fighter selects one specific type of armor with which he is proficient, such as chain shirts or scale mail. While wearing the selected type of armor, the fighter adds one-quarter of his fighter level to the armor’s armor bonus, up to a maximum bonus of +3 for light armor, +4 for medium armor, or +5 for heavy armor. This increase to the armor bonus doesn’t increase the benefit that the fighter gains from feats, class abilities, or other effects that are determined by his armor’s base armor bonus, including other advanced armor training options. A fighter can choose this option multiple times. Each time he chooses it, he applies its benefit to a different type of armor.",
+            "effects": [
+                {
+                    "attr": "ac",
+                    "bonus_type": "specialization",
+                    "bonus": "Level(Fighter)*.25",
+                    "max_bonus": 3,
+                    "min_bonus": 0,
+                    "when": "armor_type = light"
+                },
+                {
+                    "attr": "ac",
+                    "bonus_type": "specialization",
+                    "bonus": "Level(Fighter)*.25",
+                    "max_bonus": 4,
+                    "min_bonus": 0,
+                    "when": "armor_type = light"
+                },
+                {
+                    "attr": "ac",
+                    "bonus_type": "specialization",
+                    "bonus": "Level(Fighter)*.25",
+                    "max_bonus": 5,
+                    "min_bonus": 0,
+                    "when": "armor_type = heavy"
+                }
+            ]
+        },
+        {
+            "name": "Armored Confidence",
+            "description": "While wearing armor, the fighter gains a bonus on Intimidate checks based upon the type of armor he is wearing: +1 for light armor, +2 for medium armor, or +3 for heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum of +4 at 19th level. In addition, the fighter adds half his armored confidence bonus to the DC of Intimidate checks to demoralize him.",
+            "effects": [
+                {
+                    "type": "Skill",
+                    "attr": "Intimidate",
+                    "bonus": 1,
+                    "when": "armor_type = light"
+                },
+                {
+                    "type": "Skill",
+                    "attr": "Intimidate",
+                    "bonus": 2,
+                    "when": "armor_type = medium"
+                },
+                {
+                    "type": "Skill",
+                    "attr": "Intimidate",
+                    "bonus": 3,
+                    "when": "armor_type = heavy"
+                }
+            ]
+        },
+        {
+            "name": "Armored Juggernaut",
+            "description": "When wearing heavy armor, the fighter gains DR 1/—. At 7th level, the fighter gains DR 1/— when wearing medium armor, and DR 2/— when wearing heavy armor. At 11th level, the fighter gains DR 1/— when wearing light armor, DR 2/— when wearing medium armor, and DR 3/— when wearing heavy armor. If the fighter is 19th level and has the armor mastery class feature, these DR values increase by 5. The DR from this ability stacks with that provided by adamantine armor, but not with other forms of damage reduction. This damage reduction does not apply if the fighter is helpless, stunned, or unconscious. Armored Master: The fighter gains an armor mastery feat or a shield mastery feat (see pages 18–19) as a bonus feat. He must meet all of the feat’s prerequisites.",
+            "effects": [
+                {
+                    "attr": "DR"
+                }
+            ]
+        },
+        {
+            "name": "Armored Master",
+            "description": "The fighter gains an armor mastery feat or a shield mastery feat as a bonus feat. He must meet all of the feat’s prerequisites.",
+            "feats": {
+                "user-selection": [
+                    "Armor Mastery",
+                    "Shield Mastery"
+                ]
+            }
+        },
+        {
+            "name": "Armored Sacrifice",
+            "description": "When damage would cause the fighter or an adjacent ally to be knocked unconscious or killed, the fighter can instead direct the damage to a suit of armor that he is wearing or a shield he is using as an immediate action. The original target takes no damage, but the armor or shield is treated as if it had only half its normal hardness. The fighter can use this option once per day, plus one additional time each day at 11th level and every 8 fighter levels thereafter, to a maximum of three times per day at 19th level."
+        },
+        {
+            "name": "Armored Sprint",
+            "description": "The fighter gains Run as a bonus feat. If the fighter is proficient with heavy armor, he treats heavy armor as if it were one category lighter for the purpose of determining how fast he can move while running in armor.",
+            "feats": [
+                "Run"
+            ]
+        },
+        {
+            "name": "Critical Deflection",
+            "description": "While wearing armor or using a shield, the fighter gains a +2 bonus to his AC against attack rolls made to confirm a critical hit. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum of +6 at 19th level.",
+            "effects": [
+                {
+                    "attr": "AC_CRITICAL",
+                    "bonus": "2",
+                    "when": "Level(Fighter) > 7"
+                },
+                {
+                    "attr": "AC_CRITICAL",
+                    "bonus": "3",
+                    "when": "Level(Fighter) = 7 && Level(Fighter) <11"
+                },
+                {
+                    "attr": "AC_CRITICAL",
+                    "bonus": "4",
+                    "when": "Level(Fighter) = 11 && Level(Fighter) <15"
+                },
+                {
+                    "attr": "AC_CRITICAL",
+                    "bonus": "5",
+                    "when": "Level(Fighter) = 15 && Level(Fighter) <19"
+                },
+                {
+                    "attr": "AC_CRITICAL",
+                    "bonus": "6",
+                    "when": "Level(Fighter) >= 19"
+                }
+            ]
+        },
+        {
+            "name": "Master Armorer",
+            "description": "The fighter can use his base attack bonus in place of his ranks in the Craft (armor) skill. The fighter need not be wearing armor or using a shield to use this option. The fighter substitutes his total base attack bonus (including his base attack bonus gained through levels in other classes) for his ranks in this skill, but adds the skill’s usual ability score modifier and any other bonuses or penalties that would modify that skill. Additionally the fighter is treated as having the Craft Magic Arms and Armor and Master Craftsman feats, but only for the purpose of making magic armor. The fighter does not need to meet these feats’ prerequisites.",
+            "effect": {
+                "type": "Skill",
+                "attr": "Intimidate",
+                "bonus": "Craft(Armor).ranks = BAB",
+                "effect_type": "SKILL RANKS REPLACED"
+            },
+            "feats": [
+                " Craft Magic Arms and Armor",
+                "Master Craftsman "
+            ]
+        },
+        {
+            "name": "Quick Donning",
+            "description": "The fighter can don armor in a hurry without reducing its effectiveness, and remove it quickly when it becomes a hindrance. When the fighter dons or removes his armor or dons it hastily, the amount of time needed to do so is reduced, as noted on the table below. Other characters can still help the fighter don his armor as normal. Additionally, when wearing hastily donned armor, the fighter can attempt a Strength or Dexterity check as a full-round action to remove the penalties associated with wearing hastily donned armor (DC = 10 + his armor’s unmodified armor bonus). If he succeeds at the check, he is treated as having properly donned his armor rather than having hastily donned it. The fighter can also remove his armor in the same amount of time that it takes him to don his armor hastily. He can even remove sections of armor to escape grapples and similar grasping hindrances. Whenever the fighter attempts a combat maneuver check, an Escape Artist check, or a Strength check to escape from an effect that reduces or restricts his ability to move or act, he can reduce the armor bonus of any armor that he is wearing by up to half his armor’s base armor bonus. If he does so, he gains a bonus on his check equal to the amount by which he reduced his armor’s armor bonus. Multiple uses of this ability cannot reduce the armor’s armor bonus below half its base armor bonus, and the reduction to the armor’s armor bonus lasts until the fighter recovers and dons the removed pieces of armor."
+        },
+        {
+            "name": "Steel Headbutt",
+            "description": "While wearing medium or heavy armor, a fighter can deliver a headbutt with his helm as part of a full attack action. This headbutt is in addition to his normal attacks, and is made using the fighter’s base attack bonus – 5. A helmet headbutt deals 1d3 points of damage if the fighter is wearing medium armor, or 1d4 points of damage if he is wearing heavy armor (1d2 and 1d3, respectively, for Small creatures), plus an amount of damage equal to 1/2 the fighter’s Strength modifier. Treat this attack as a weapon attack made using the same special material (if any) as the armor. The armor’s enhancement bonus does not modify the headbutt attack, but the helm can be enchanted as a separate weapon.",
+            "effect": {
+                "attr": "Attacks",
+                "bonus": "BAB-5",
+                "dmg": "1d3+STR_MOD*.5"
+            }
+        },
+        {
+            "name": "Unmoving",
+            "description": "Select one combat maneuver (except sunder). Whether using his armor as leverage against a grappling foe or using its weight to help him stop a bull rush, a fighter can use his armor to protect him from the chosen combat maneuver. While wearing armor or wielding a shield, the fighter gains a bonus to his CMD against the chosen combat maneuver. The bonus is +1 if he’s wearing light armor, +2 if he’s wearing medium armor, and +3 if he’s wearing heavy armor. This bonus increases by 1 at 7th level and every 4 fighter levels thereafter, to a maximum at 19th level of +5 for light armor, +6 for medium armor, and +7 for heavy armor. Mithral armor provides a bonus 1 lower than normal for armor of its type"
+        }
+    ],
+    "favored-class-bonus": [
+        {
+            "race": "dwarf",
+            "effects": [
+                {
+                    "attr": "CMD.bull",
+                    "bonus": "1"
+                },
+                {
+                    "attr": "CMD.trip",
+                    "bonus": "1"
+                }
+            ]
+        },
+        {
+            "race": "elf",
+            "effects": [
+                {
+                    "attr": "CMD.disarm",
+                    "bonus": "1"
+                },
+                {
+                    "attr": "CMD.sunder",
+                    "bonus": "1"
+                }
+            ]
+        },
+        {
+            "race": "gnome",
+            "effects": [
+                {
+                    "attr": "CMD.dirty",
+                    "bonus": "1"
+                },
+                {
+                    "attr": "CMD.steal",
+                    "bonus": "1"
+                }
+            ]
+        },
+        {
+            "race": "helf-elf",
+            "effects": [
+                {
+                    "attr": "CMD.disarm",
+                    "bonus": "1"
+                },
+                {
+                    "attr": "CMD.overrun",
+                    "bonus": "1"
+                }
+            ]
+        },
+        {
+            "race": "half-orc",
+            "effects": [
+                {
+                    "attr": "stabilize",
+                    "bonus": "2",
+                    "when": "dying"
+                }
+            ]
+        },
+        {
+            "race": "Halfling",
+            "effects": [
+                {
+                    "attr": "CMD.grapple",
+                    "bonus": "1"
+                },
+                {
+                    "attr": "CMD.trip",
+                    "bonus": "1"
+                }
+            ]
+        },
+        {
+            "race": "human",
+            "effects": [
+                {
+                    "user-selection": [
+                        "bull",
+                        "dirty",
+                        "trip",
+                        "steal",
+                        "sunder",
+                        "overrun",
+                        "reposition",
+                        "feint",
+                        "disarm",
+                        "drag",
+                        "grapple",
+                        "tie"
+                    ],
+                    "bonus": "1"
+                },
+                {
+                    "attr": "CMD.steal",
+                    "bonus": "1"
+                }
+            ]
+        }
+    ]
+}

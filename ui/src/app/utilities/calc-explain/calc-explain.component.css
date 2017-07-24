@@ -1,0 +1,16 @@
+.CalcResultContainer {
+    background-color: bisque;
+    border: 1pm solid black;
+}
+.CalcElement {
+    display: inline-block;
+    position: relative;
+}
+.CalcElementValue {
+    font-size: 18px;
+    text-align: center;
+}
+.CalcElementName {
+    font-size: 10px;
+    text-align: center;
+}

@@ -1,5 +1,5 @@
 // A RuleSet defines a set of rules. Rules can be individually disabled in a rulebook
-export class RuleBook {
+export class Book {
     // If this rulebook is required
     public required: Boolean
 

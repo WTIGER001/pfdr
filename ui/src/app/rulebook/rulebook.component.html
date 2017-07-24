@@ -1,3 +1,38 @@
-<p>
-  rulebook works!
-</p>
+<h3>Rule Book Reference</h3>
+<ngb-tabset>
+  <ngb-tab title="Races">
+    <ng-template ngbTabContent>
+      Race Page
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle>Classes</ng-template>
+    <ng-template ngbTabContent>
+      <ul class="nav flex-column">
+        <li class="nav-item" *ngFor="let cls of classes">
+          <a class="nav-link active" href="#">Active</a>
+        </li>
+      </ul>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle>Skills</ng-template>
+    <ng-template ngbTabContent>TOC</ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle>Feats</ng-template>
+    <ng-template ngbTabContent>TOC</ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle>Armor</ng-template>
+    <ng-template ngbTabContent>TOC</ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle>Weapons</ng-template>
+    <ng-template ngbTabContent>TOC</ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle>Items</ng-template>
+    <ng-template ngbTabContent>TOC</ng-template>
+  </ngb-tab>
+</ngb-tabset>

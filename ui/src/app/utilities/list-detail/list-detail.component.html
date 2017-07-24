@@ -1,0 +1,12 @@
+<div class="list-detail-container">
+  <div class="list-detail-side">
+    <ul class="list-detail-items">
+      <li class="list-detail-item" *ngFor="let item of items" [ngClass]="{selected: isSelected(item)}">
+        {{item.name}}
+      </li>
+    </ul>
+  </div>
+  <div class="list-detail-content">
+
+  </div>
+</div>

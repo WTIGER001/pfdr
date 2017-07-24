@@ -1,0 +1,14 @@
+<div class="CalcResultContainer">
+  <div class="CalcElement" *ngFor="let cr of result.elements">
+    <div class="CalcElementValue">{{cr.value}}</div>
+    <div class="CalcElementName" >{{cr.name}}</div>
+  </div>
+  <div class="CalcElement">
+    <div class="CalcElementValue">=</div>
+    <div class="CalcElementName" >}</div>
+  </div>
+  <div class="CalcElement">
+    <div class="CalcElementValue">{{result.total.value}}</div>
+    <div class="CalcElementName" >Total</div>
+  </div>
+<div>

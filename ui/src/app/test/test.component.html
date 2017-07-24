@@ -1,0 +1,67 @@
+<div class="backdrop full"> </div>
+
+<div class="area col-sm-12 col-12">
+  <div class="form-group row">
+    <div class="col-12">
+      <h4>TEST</h4>
+      <button (click)="calc()">Calculate</button>
+    </div>
+    <div class="form-group row">
+      <label for="hp" class="col-1 col-form-label">STR</label>
+      <div class="col-1">
+        <input name="name" class="form-control" type="text" [(ngModel)]="character.abilities.STR.raw">
+      </div>
+      <div class="col-1">
+        {{character.abilities.STR.raw}}
+      </div>
+      <div class="col-1">
+        {{character.abilities.STR.val}}
+      </div>
+      <div class="col-1">
+        {{character.abilities.STR.mod}}
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="hp" class="col-1 col-form-label">CON</label>
+      <div class="col-1">
+        <input name="name" class="form-control" type="text" [(ngModel)]="character.abilities.CON.raw">
+      </div>
+      <div class="col-1">
+        {{character.abilities.CON.raw}}
+      </div>
+      <div class="col-1">
+        {{character.abilities.CON.val}}
+      </div>
+      <div class="col-1">
+        {{character.abilities.CON.mod}}
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="hp" class="col-1 col-form-label">HP</label>
+      <div class="col-1">
+        <input name="name" class="form-control" type="text" [(ngModel)]="character.hp">
+      </div>
+      <div class="col-1">
+        {{character.hp}}
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="hp" class="col-1 col-form-label">HP</label>
+      <div class="col-1">
+        <input name="name" class="form-control" type="text" [(ngModel)]="character.hp">
+      </div>
+      <div class="col-1">
+        {{character.hp}}
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="hp" class="col-1 col-form-label">HP</label>
+      <div class="col-1">
+        <input name="name" class="form-control" type="text" [(ngModel)]="character.hp">
+      </div>
+      <div class="col-1">
+        {{character.hp}}
+      </div>
+    </div>
+
+  </div>

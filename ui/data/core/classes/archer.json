@@ -1,0 +1,163 @@
+{
+    "name": "Archer",
+    "type": "Archectype",
+    "base_class": "Fighter",
+    "desc": "The archer is dedicated to the careful mastery of the bow, perfecting his skills with years of practice honed day after day on ranges and hunting for game, or else on the battlefield, raining destruction down on the enemy lines.",
+    "replaced-abilities": [
+        "bravery",
+        "armor training 1",
+        "armor training 2",
+        "armor training 3",
+        "armor training 4",
+        "weapon training 1",
+        "weapon training 2",
+        "weapon training 3",
+        "weapon training 4",
+        "armor mastery"
+    ],
+    "levels": [
+        {
+            "rank": 2,
+            "abilitites": [
+                "Hawkeye 1"
+            ]
+        },
+        {
+            "rank": 3,
+            "abilitites": [
+                "Trick Shot"
+            ]
+        },
+        {
+            "rank": 5,
+            "abilitites": [
+                "Expert Archer"
+            ]
+        },
+        {
+            "rank": 6,
+            "abilitites": [
+                "Hawkeye 2"
+            ]
+        },
+        {
+            "rank": 9,
+            "abilitites": [
+                "Safe Shot"
+            ]
+        },
+        {
+            "rank": 10,
+            "abilitites": [
+                "Hawkeye 3"
+            ]
+        },
+        {
+            "rank": 13,
+            "abilitites": [
+                "Evasive Archer"
+            ]
+        },
+        {
+            "rank": 14,
+            "abilitites": [
+                "Hawkeye 4"
+            ]
+        },
+        {
+            "rank": 17,
+            "abilitites": [
+                "Volley"
+            ]
+        },
+        {
+            "rank": 18,
+            "abilitites": [
+                "Hawkeye 5"
+            ]
+        },
+        {
+            "rank": 19,
+            "abilitites": [
+                "Ranged Defense"
+            ]
+        }
+    ],
+    "extraordinary-abilities": [
+        {
+            "name": "Hawkeye 1",
+            "description": "At 2nd level, an archer gains a +1 bonus on Perception checks, and the range increment for any bow he uses increases by 5 feet. These bonuses increase by +1 and 5 additional feet for every 4 levels beyond 2nd. This ability replaces Bravery.",
+            "effects": [
+                {
+                    "attr": "Perception",
+                    "bonus": "2"
+                },
+                {
+                    "tyoe": "Bow",
+                    "attr": "Range(Bow)",
+                    "bonus": "5"
+                }
+            ]
+        },
+        {
+            "name": "Hawkeye 2",
+            "description": "At 2nd level, an archer gains a +1 bonus on Perception checks, and the range increment for any bow he uses increases by 5 feet. These bonuses increase by +1 and 5 additional feet for every 4 levels beyond 2nd. This ability replaces Bravery.",
+            "effects": [
+                {
+                    "attr": "Perception",
+                    "bonus": "1"
+                },
+                {
+                    "tyoe": "Bow",
+                    "attr": "Range(Bow)",
+                    "bonus": "5"
+                }
+            ]
+        },
+        {
+            "name": "Hawkeye 3",
+            "description": "At 2nd level, an archer gains a +1 bonus on Perception checks, and the range increment for any bow he uses increases by 5 feet. These bonuses increase by +1 and 5 additional feet for every 4 levels beyond 2nd. This ability replaces Bravery.",
+            "effects": [
+                {
+                    "attr": "Perception",
+                    "bonus": "1"
+                },
+                {
+                    "tyoe": "Bow",
+                    "attr": "Range(Bow)",
+                    "bonus": "5"
+                }
+            ]
+        },
+        {
+            "name": "Hawkeye 4",
+            "description": "At 2nd level, an archer gains a +1 bonus on Perception checks, and the range increment for any bow he uses increases by 5 feet. These bonuses increase by +1 and 5 additional feet for every 4 levels beyond 2nd. This ability replaces Bravery.",
+            "effects": [
+                {
+                    "attr": "Perception",
+                    "bonus": "1"
+                },
+                {
+                    "tyoe": "Bow",
+                    "attr": "Range(Bow)",
+                    "bonus": "5"
+                }
+            ]
+        },
+        {
+            "name": "Hawkeye 5",
+            "description": "At 2nd level, an archer gains a +1 bonus on Perception checks, and the range increment for any bow he uses increases by 5 feet. These bonuses increase by +1 and 5 additional feet for every 4 levels beyond 2nd. This ability replaces Bravery.",
+            "effects": [
+                {
+                    "attr": "Perception",
+                    "bonus": "1"
+                },
+                {
+                    "tyoe": "Bow",
+                    "attr": "Range(Bow)",
+                    "bonus": "5"
+                }
+            ]
+        }
+    ]
+}

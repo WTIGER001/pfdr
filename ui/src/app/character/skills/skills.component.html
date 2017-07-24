@@ -1,0 +1,27 @@
+<div>
+  <div>Skills Points {{calc.SkillsUsed()}} of {{calc.SkillsAvailable()}} ({{calc.SkillsRemaining()}})
+  <table>
+    <thead>
+      <th><i class="fa fa-check-square-o" aria-hidden="true"></i></th>
+        <th><i class="fa fa-check-shield" aria-hidden="true"></i></th>
+        <th><span placement="bottom" ngbTooltip="need this">Skill</span></th>
+        <th><span placement="bottom" ngbTooltip="need this">Ability</span></th>
+        <th><span placement="bottom" ngbTooltip="need this">Mod</span></th>
+        <th>Rank</th>
+        <th>Misc Mod</th>
+        <th><span placement="bottom" ngbTooltip="need this">Total</span></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let skill of character.skills">
+        <td><i *ngIf="!isClassSkill(skill)" class="fa fa-check-square-o" aria-hidden="true"></i></td>
+        <td><i *ngIf="skill.acp" class="fa fa-check-shield" aria-hidden="true"></i></td>
+        <td><span placement="bottom" ngbTooltip="{{skill.description}}">{{skill.name}}</span></td>
+        <td><span placement="bottom" ngbTooltip="need this">{{skill.ability}}</span></td>
+        <td><span placement="bottom" ngbTooltip="need this">{{ablityMod(skill)}}</span></td>
+        <td><input class="form-control" type="number" value="0" id="example-number-input" min="0" max="50" [(ngModel)]="skill.rank"></td>
+        <td><input class="form-control" type="number" value="0" id="example-number-input" min="0" max="50" [(ngModel)]="skill.miscMod"></td>
+        <td><span placement="bottom" ngbTooltip="need this">{{skill.total}}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
