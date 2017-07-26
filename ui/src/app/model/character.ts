@@ -1,9 +1,10 @@
-import { Value, CompositeValue } from './value'
+import { Value, CompositeValue, Values } from './value'
+import { EffectDef } from '../model/ref/effectDef'
 
 export class Character {
     public id: string
-    public hp: number
-    public abilities = new Abilities()
+    public values = new Values()
+    // public abilities = new Abilities()
     public personal = new PersonalInfo()
     public levels: ClassLevel[] = new Array
     public skills: Skills = new Skills()
@@ -18,41 +19,46 @@ export class Character {
     public compainions = ""
     public money = ""
 
-    public cache = new CalcCache()
+    public manual = new Array<EffectDef>()
 }
 
-export class CalcCache {
-    public values = new Map<string, Value>()
-}
+// export class Abilities {
+//     private data = new Map<string, Ability>()
+//     constructor() {
+//         this.set("str", this.STR);
+//         this.set("dex", this.DEX);
+//         this.set("con", this.CON);
+//         this.set("int", this.INT);
+//         this.set("wis", this.WIS);
+//         this.set("cha", this.CHA);
+//     }
 
-export class Abilities extends Map<string, Ability>{
-    constructor() {
-        super()
-        this.set("str", this.STR);
-        this.set("dex", this.DEX);
-        this.set("con", this.CON);
-        this.set("int", this.INT);
-        this.set("wis", this.WIS);
-        this.set("cha", this.CHA);
-    }
+//     public items(): Map<string, Ability> {
+//         return this.data
+//     }
+//     public set(k, v) {
+//         this.data.set(k, v)
+//     }
+//     public get(k: string): Ability {
+//         return this.data.get(k)
+//     }
+//     public STR = new Ability("Strength", "STR")
+//     public DEX = new Ability("Dexterity", "DEX")
+//     public CON = new Ability("Constitution", "CON")
+//     public WIS = new Ability("Wisdom", "WIS")
+//     public INT = new Ability("Intelligence", "INT")
+//     public CHA = new Ability("Strength", "CHA")
 
-    public STR = new Ability("Strength", "STR")
-    public DEX = new Ability("Dexterity", "DEX")
-    public CON = new Ability("Constitution", "CON")
-    public WIS = new Ability("Wisdom", "WIS")
-    public INT = new Ability("Intelligence", "INT")
-    public CHA = new Ability("Strength", "CHA")
+// }
 
-}
+// export class Ability {
+//     public raw: number
+//     public mod: number
+//     public val: number
+//     constructor(public name: String, public abbr) {
 
-export class Ability {
-    public raw: number
-    public mod: number
-    public val: number
-    constructor(public name: String, public abbr) {
-
-    }
-}
+//     }
+// }
 
 
 export class Skills {

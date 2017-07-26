@@ -1,132 +1,125 @@
 {
-    "targets": [
-        {
-            "key": "STR",
-            "type": "Ability Score",
-            "name": "Strength",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "character.abilities['STR']"
-        },
-        {
-            "key": "CON",
-            "type": "Ability Score",
-            "name": "Constitution",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "character.abilities['CON']"
-        },
-        {
-            "key": "DEX",
-            "type": "Ability Score",
-            "name": "Dexterity",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "character.abilities['DEX']"
-        },
-        {
-            "key": "INT",
-            "type": "Ability Score",
-            "name": "Intelligence",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "character.abilities['INT']"
-        },
-        {
-            "key": "WIS",
-            "type": "Ability Score",
-            "name": "Wisdom",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "character.abilities['WIS']"
-        },
-        {
-            "key": "CHA",
-            "type": "Ability Score",
-            "name": "Charisma",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "character.abilities['CHA']"
-        },
-        {
-            "key": "STR_MOD",
-            "type": "Ability Score Mod",
-            "name": "STR MOD",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "0"
-        },
-        {
-            "key": "CON_MOD",
-            "type": "Ability Score Mod",
-            "name": "CON MOD",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "0"
-        },
-        {
-            "key": "DEX_MOD",
-            "type": "Ability Score Mod",
-            "name": "DEX MOD",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "0"
-        },
-        {
-            "key": "INT_MOD",
-            "type": "Ability Score Mod",
-            "name": "INT_MOD",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "0"
-        },
-        {
-            "key": "WIS_MOD",
-            "type": "Ability Score Mod",
-            "name": "WIS MOD",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "0"
-        },
-        {
-            "key": "CHA_MOD",
-            "type": "Ability Score Mod",
-            "name": "CHA MOD",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "0"
-        },
-        {
-            "key": "HP",
-            "type": "Combat",
-            "name": "Hit Points",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "0"
-        },
-        {
-            "key": "AC",
-            "type": "Combat",
-            "name": "Armor Class",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "10"
-        },
-        {
-            "key": "AC_TOUCH",
-            "type": "Combat",
-            "name": "Armor Class (Touch)",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "10"
-        },
-        {
-            "key": "AC_FLAT",
-            "type": "Combat",
-            "name": "Armor Class (Flat Footed)",
-            "desc": "",
-            "stacking": "stack",
-            "raw": "10"
-        }
-    ]
+  "targets": [{
+      "key": "STR",
+      "type": "Ability Score",
+      "name": "Strength",
+      "desc": "",
+      "stacking": "stack"
+    },
+    {
+      "key": "CON",
+      "type": "Ability Score",
+      "name": "Constitution",
+      "desc": "",
+      "stacking": "stack"
+    },
+    {
+      "key": "DEX",
+      "type": "Ability Score",
+      "name": "Dexterity",
+      "desc": "",
+      "stacking": "stack"
+    },
+    {
+      "key": "INT",
+      "type": "Ability Score",
+      "name": "Intelligence",
+      "desc": "",
+      "stacking": "stack"
+    },
+    {
+      "key": "WIS",
+      "type": "Ability Score",
+      "name": "Wisdom",
+      "desc": "",
+      "stacking": "stack"
+    },
+    {
+      "key": "CHA",
+      "type": "Ability Score",
+      "name": "Charisma",
+      "desc": "",
+      "stacking": "stack"
+    },
+    {
+      "key": "STR_MOD",
+      "type": "Ability Score Mod",
+      "name": "STR MOD",
+      "desc": "",
+      "stacking": "stack",
+      "raw": "0"
+    },
+    {
+      "key": "CON_MOD",
+      "type": "Ability Score Mod",
+      "name": "CON MOD",
+      "desc": "",
+      "stacking": "stack",
+      "raw": "0"
+    },
+    {
+      "key": "DEX_MOD",
+      "type": "Ability Score Mod",
+      "name": "DEX MOD",
+      "desc": "",
+      "stacking": "stack",
+      "raw": "0"
+    },
+    {
+      "key": "INT_MOD",
+      "type": "Ability Score Mod",
+      "name": "INT_MOD",
+      "desc": "",
+      "stacking": "stack",
+      "raw": "0"
+    },
+    {
+      "key": "WIS_MOD",
+      "type": "Ability Score Mod",
+      "name": "WIS MOD",
+      "desc": "",
+      "stacking": "stack",
+      "raw": "0"
+    },
+    {
+      "key": "CHA_MOD",
+      "type": "Ability Score Mod",
+      "name": "CHA MOD",
+      "desc": "",
+      "stacking": "stack",
+      "raw": "0"
+    },
+    {
+      "key": "HP",
+      "type": "Combat",
+      "name": "Hit Points",
+      "desc": "",
+      "stacking": "stack",
+      "raw": "0"
+    },
+    {
+      "key": "AC",
+      "type": "Combat",
+      "name": "Armor Class",
+      "desc": "",
+      "stacking": "stack",
+      "raw": "10"
+    },
+    {
+      "key": "AC_TOUCH",
+      "type": "Combat",
+      "name": "Armor Class (Touch)",
+      "desc": "",
+      "stacking": "stack",
+      "raw": "10"
+    },
+    {
+      "key": "AC_FLAT",
+      "type": "Combat",
+      "name": "Armor Class (Flat Footed)",
+      "desc": "",
+      "stacking": "stack",
+      "raw": "10"
+    }
+  ]
 }

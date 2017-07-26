@@ -1,4 +1,4 @@
-import { RuleBook } from "./rulebook"
+import { Book } from "./book"
 
 
 // Describes a campaign object
@@ -10,7 +10,7 @@ export class Campaign {
     public shared: Boolean = false
     public dateCreated: String = ""
     public lastAccess: String = ""
-    public rulebooks: RuleBook[] = []
+    public rulebooks: Book[] = []
     public description: string = ""
 
     constructor() {

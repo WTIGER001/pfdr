@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Character, ClassLevel, Value, CompositeValue, RuleBook, Target, Subtarget, StackingRule } from './model'
-import { Ability } from './model/character'
+import { Character, ClassLevel, Value, CompositeValue, RuleBook, Target, Subtarget, StackingRule, Database, Rule } from './model'
 import { Formula } from './model/formula'
 import { Collector, Warning, SEVERITY } from './model/calc/calcEffects'
 import { ClassDef, ClassLevelDef } from './model/ref/classDef'
@@ -14,8 +13,14 @@ export class EngineService {
   rules: RuleBook
   sources = new Array<(chr: Character, collector: Collector) => any>()
   functions = new Map<string, { (): number }>()
-
+  database: Database
   constructor(private db: DbService) {
+    this.db.db.subscribe(d => {
+      console.log("Setting Database")
+      this.database = d
+    })
+
+    this.addEffectSource(this.fromRules)
     this.addEffectSource(this.fromRace)
     this.addEffectSource(this.fromAbilityScores)
     this.addEffectSource(this.fromTraits)
@@ -26,6 +31,9 @@ export class EngineService {
     this.addEffectSource(this.fromGear)
     this.addEffectSource(this.fromConditions)
     this.addEffectSource(this.fromSpells)
+    this.addEffectSource(this.fromManual)
+
+    this.addComputeFunction("max", Math.max)
   }
 
   public addEffectSource(fn: (chr: Character, collector: Collector) => any) {
@@ -43,7 +51,7 @@ export class EngineService {
 
     // Get the necessary variables
     formula.vars.forEach(name => {
-      let x = chr.cache.values.get(name)
+      let x = chr.values.get(name)
       if (x == undefined) {
         // OOPS
         console.log("Missing Variable [" + name + "] skipping calculation");
@@ -54,7 +62,7 @@ export class EngineService {
 
     // Get the array values
     formula.arrays.forEach(name => {
-      let x = this.db.getNamedArrays().get(name)
+      let x = this.database.namedArraysMap.get(name)
       if (x == undefined) {
         // OOPS
         console.log("Missing Named Array [" + name + "] skipping calculation");
@@ -81,11 +89,11 @@ export class EngineService {
   }
 
   public getTargetValue(chr: Character, key: string) {
-    let x = chr.cache.values.get(name)
+    let x = chr.values.get(name)
     if (x == undefined) {
       // Maybe the calculations have not been run
       this.calculate(chr)
-      x = chr.cache.values.get(name)
+      x = chr.values.get(name)
       if (x == undefined) {
         // NOPE ERROR
         return NaN
@@ -105,51 +113,29 @@ export class EngineService {
     collector.sort()
 
     // Create a new Cache
-    c.cache.values.clear()
+    // clear the bonuses
+    c.values.clearBonuses()
 
-    // Iterate
+    // Iterate over the values and generate the bonuses
     collector.effects.forEach(effect => {
 
       // Evaluate the Effect
       let x = this.evaluateFormula(c, effect.formula)
 
       // Store the result
-      let v = c.cache.values.get(effect.target)
-      if (v == undefined) {
-        v = new Value()
-        v.key = effect.target.toLowerCase()
-        let parts = v.key.split(".")
-        if (parts.length == 1) {
-          let tgt = this.db.targets.get(v.key)
-          if (tgt == undefined) {
-            // BAD
-          }
-
-          // Evaluate
-          v.raw = this.evalProperty(c, tgt.raw)
-          const stack: StackingRule | undefined = (<any>StackingRule)[tgt.stacking.toUpperCase()];
-          if (stack !== undefined) {
-            //TSC will understand that mayBeColor of type Color here
-            v.stacking = stack
-          }
-        } else {
-          let sub = this.db.subtargets.get(parts[parts.length - 1])
-          if (sub == undefined) {
-            // BAD
-          }
-          const stack: StackingRule | undefined = (<any>StackingRule)[sub.stacking.toUpperCase()];
-          if (stack !== undefined) {
-            //TSC will understand that mayBeColor of type Color here
-            v.stacking = stack
-          }
-        }
-        c.cache.values.set(v.key, v)
-      }
+      let v = c.values.get(effect.target)
 
       v.bonuses.push(x)
     });
 
-    this.calcEffectsfromAbilities(c)
+    // Apply the sub target to the targets
+    c.values.forEach(v => {
+      let a = v.key.split(".")
+      if (a.length == 2) {
+        c.values.get(a[0]).bonuses.push(v.total)
+      }
+    })
+
   }
 
 
@@ -159,30 +145,34 @@ export class EngineService {
   }
 
   public calcEffectsfromAbilities(c: Character) {
-    c.abilities.forEach((v: Ability, k: string) => {
+    // c.abilities.items().forEach((v: Ability, k: string) => {
 
-    });
+    // });
   }
 
   public collectEffects(c: Character): Collector {
     const coll = new Collector();
 
     this.sources.forEach(fn => {
-      fn(c, coll)
+      fn.call(this, c, coll)
     });
 
     return coll;
   }
 
+  private fromRules(chr: Character, coll: Collector) {
+    this.database.rules.forEach(r => {
+      r.effects.forEach(e => {
+        coll.add(e)
+      })
+    })
+  }
   private fromAbilityScores(chr: Character, coll: Collector) {
-    chr.abilities.forEach((v: Ability, k: string) => {
-      let e = new EffectDef();
-      e.target = v.abbr + "_mod"
-      e.bonus = ""
-
-
-      coll.add(new EffectDef(
-    });
+    // chr.abilities.items().forEach((v: Ability, k: string) => {
+    //   let e = new EffectDef();
+    //   e.target = v.abbr + "_mod"
+    //   e.bonus = ""
+    // });
   }
 
   private fromRace(chr: Character, coll: Collector) {
@@ -213,6 +203,11 @@ export class EngineService {
 
   private fromConditions(chr: Character, coll: Collector) {
 
+  }
+  private fromManual(chr: Character, coll: Collector) {
+    chr.manual.forEach(e => {
+      coll.add(e)
+    })
   }
 
   private fromClassLevels(chr: Character, coll: Collector) {
@@ -258,47 +253,48 @@ export class EngineService {
     });
   }
 
-  private getMod(score: number) {
-    const MOD = [
-      -6,
-      -5,
-      -4,
-      -4,
-      -3,
-      -3,
-      -2,
-      -2,
-      -1,
-      -1,
-      0,
-      0,
-      1,
-      1,
-      2,
-      2,
-      3,
-      3,
-      4,
-      4,
-      5,
-      5,
-      6,
-      6,
-      7,
-      7,
-      8,
-      8,
-      9,
-      9,
-      10,
-      10,
-      11,
-      11,
-      12,
-      12,
-      13
-    ]
-    return MOD[score]
+  public newCharacter(): Character {
+    let c = new Character();
+    this.addTargets(c)
+    this.addSubTargets(c)
+    return c
+  }
+
+  public addTargets(c: Character) {
+    this.database.targets.forEach(t => {
+      let v = new Value()
+      v.key = t.key
+      const stack: StackingRule | undefined = (<any>StackingRule)[t.stacking.toUpperCase()];
+      if (stack !== undefined) {
+        //TSC will understand that mayBeColor of type Color here
+        v.stacking = stack
+      }
+      v.type = t.type
+      v.raw = t.raw
+      c.values.set(v)
+    });
+  }
+
+  public addSubTargets(c: Character) {
+    this.database.sub_targets.forEach(t => {
+      t.targets.forEach(s => {
+        let v = new Value()
+        let target = c.values.get(s)
+        v.key = s + "." + t.key
+        if (t.stacking) {
+          const stack: StackingRule | undefined = (<any>StackingRule)[t.stacking.toUpperCase()];
+          if (stack !== undefined) {
+            //TSC will understand that mayBeColor of type Color here
+            v.stacking = stack
+          }
+        }
+
+        v.type = target.type
+        v.raw = t.raw
+
+        c.values.set(v)
+      })
+    });
   }
 
 }

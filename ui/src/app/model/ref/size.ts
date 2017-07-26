@@ -42,7 +42,7 @@ export class Sizes {
 
 export class Size {
     constructor(
-        public rank: number
+        public rank: number,
         public size: string,
         public sizeMod: number,
         public sizeModSpecial: number,
@@ -54,5 +54,4 @@ export class Size {
         public typicalHeightMax: number,
         public typicalWeightMin: number,
         public typicalWeightMax: number) { }
-
 }

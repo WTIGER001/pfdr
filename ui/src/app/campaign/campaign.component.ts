@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { DbService } from '../db.service'
-import { Database, Campaign, RuleBook } from '../model'
+import { Database, Campaign, Book } from '../model'
 
 @Component({
   selector: 'app-campaign',
@@ -41,7 +41,7 @@ export class CampaignComponent implements OnInit {
       .filter(() => confirm);
   }
 
-  public notSelected(book: RuleBook) {
+  public notSelected(book: Book) {
     if (this.campaign.rulebooks != undefined) {
       for (let i = 0; i < this.campaign.rulebooks.length; i++) {
         if (book.name === this.campaign.rulebooks[i].name) {
@@ -53,7 +53,7 @@ export class CampaignComponent implements OnInit {
     return true
   }
 
-  public selectBook(book: RuleBook) {
+  public selectBook(book: Book) {
     let alreadySelected = !this.notSelected(book)
     if (alreadySelected) {
       for (let i = 0; i < this.campaign.rulebooks.length; i++) {

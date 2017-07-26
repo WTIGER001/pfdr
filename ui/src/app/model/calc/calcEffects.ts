@@ -10,6 +10,8 @@ export class Collector {
             this.effects.push(effect)
         } else if (effect instanceof Warning) {
             this.warnings.push(effect)
+        } else {
+            throw "Illegal Type " + JSON.stringify(effect)
         }
     }
 

@@ -12,8 +12,8 @@ export class ClassDef {
     public skill_ranks_per_level: number
     public feats: string[]
     public levels = new Array<ClassLevelDef>()
-    public extraordinary_abilities: ExAbility[]
-    public replaced_abilities: string[]
+    public extraordinary_abilities = new Array<ExAbility>()
+    public replaced_abilities = new Array<String>()
 
     public getClassLevelDef(rank: number) {
         return this.levels[rank]
@@ -26,14 +26,48 @@ export class ClassDef {
         });
         return undefined
     }
+
+    public fromJson(c: ClassDef): ClassDef {
+        Object.assign(this, c)
+
+        this.levels = new Array<ClassLevelDef>()
+        this.extraordinary_abilities = new Array<ExAbility>()
+
+        if (c.levels) {
+            c.levels.forEach(o => {
+                this.levels.push(new ClassLevelDef().fromJson(o))
+            })
+        }
+        if (c.extraordinary_abilities) {
+            c.extraordinary_abilities.forEach(o => {
+                this.extraordinary_abilities.push(new ExAbility().fromJson(o))
+            })
+        }
+
+        return this
+    }
 }
 
 export class ClassLevelDef {
     public rank: number
     public skillPoints: number
-    public bonuses: EffectDef[]
+    public bonuses = new Array<EffectDef>()
     public abilities: string[]
     public feats: string[]
+
+    public fromJson(o: ClassLevelDef): ClassLevelDef {
+        Object.assign(this, o)
+
+        this.bonuses.splice(0, this.bonuses.length)
+
+        if (o.bonuses) {
+            o.bonuses.forEach(other => {
+                this.bonuses.push(new EffectDef().fromJson(other))
+            });
+        }
+
+        return this
+    }
 }
 
 export enum ClassType {

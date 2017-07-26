@@ -23,10 +23,10 @@ export class RulebookComponent implements OnInit {
 
   public set category(c: string) {
     this._category = c
-    switch (c) {
-      case "Races":
-        this.list = this._dbService.getNames()
-    }
+    // switch (c) {
+    //   case "Races":
+    //     this.list = this._dbService.getNames()
+    // }
   }
 
 }

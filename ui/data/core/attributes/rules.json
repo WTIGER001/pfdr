@@ -1,0 +1,40 @@
+{
+  "rules": [{
+    "name": "STR MOD",
+    "effects": [{
+      "target": "STR_MOD",
+      "bonus": "ABILITY_MOD[STR]"
+    }]
+  }, {
+    "name": "DEX MOD",
+    "effects": [{
+      "target": "DEX_MOD",
+      "bonus": "ABILITY_MOD[DEX]"
+    }]
+  }, {
+    "name": "CON MOD",
+
+    "effects": [{
+      "target": "CON_MOD",
+      "bonus": "ABILITY_MOD[CON]"
+    }]
+  }, {
+    "name": "INT MOD",
+    "effects": [{
+      "target": "INT_MOD",
+      "bonus": "ABILITY_MOD[INT]"
+    }]
+  }, {
+    "name": "WIS MOD",
+    "effects": [{
+      "target": "WIS_MOD",
+      "bonus": "ABILITY_MOD[WIS]"
+    }]
+  }, {
+    "name": "CHA MOD",
+    "effects": [{
+      "target": "CHA_MOD",
+      "bonus": "ABILITY_MOD[CHA]"
+    }]
+  }]
+}

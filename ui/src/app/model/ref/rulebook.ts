@@ -1,5 +1,6 @@
 import { ClassDef } from './classDef'
 import { SkillDef } from './skillDef'
+import { EffectDef } from './effectDef'
 
 export class RuleBook {
 
@@ -28,10 +29,25 @@ export class RuleBook {
     }
 }
 
-export interface IRule {
-    name: string
-    definition: string
-    source: string
+export class Rule {
+    public name: string
+    public effects: EffectDef[]
+
+    public fromJson(o: Rule): Rule {
+        Object.assign(this, o)
+        this.effects = new Array<EffectDef>()
+
+        if (o.effects) {
+            for (let i = 0; i < o.effects.length; i++) {
+                this.effects.push(new EffectDef().fromJson(o.effects[i]))
+            }
+            o.effects.forEach(e => {
+
+            });
+        }
+
+        return this
+    }
 }
 
 export class Target {
@@ -39,7 +55,7 @@ export class Target {
     public type: string
     public desc?: string = "None Provided"
     public stacking: string
-    public raw?: string = "0"
+    public raw: number = 0
 }
 
 export class Subtarget {
@@ -48,6 +64,7 @@ export class Subtarget {
     public desc?: string = "None Provided"
     public stacking: string
     public url?: string
+    public raw: number = 0
     public targets: string[]
 }
 

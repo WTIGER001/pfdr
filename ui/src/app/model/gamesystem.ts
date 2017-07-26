@@ -1,10 +1,10 @@
-import { RuleBook } from "./rulebook"
+import { Book } from "./book"
 
 // Describes a campaign object
 export class GameSystem {
     public name: string = "PathFinder RPG"
     public image: string = "assets/logo.png"
-    public ruleBooks: RuleBook[] = []
+    public ruleBooks: Book[] = []
 
     constructor() {
 

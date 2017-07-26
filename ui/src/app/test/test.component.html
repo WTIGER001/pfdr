@@ -1,67 +1,46 @@
-<div class="backdrop full"> </div>
-
-<div class="area col-sm-12 col-12">
-  <div class="form-group row">
-    <div class="col-12">
-      <h4>TEST</h4>
-      <button (click)="calc()">Calculate</button>
+<div *ngIf="character == undefined">
+  <h1>LOADING</h1>
+</div>
+<div class="area col-sm-12 col-12" *ngIf="character">
+  <h3>Values</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-4"><button (click)="calc()">Calculate Bonuses</button></div>
     </div>
-    <div class="form-group row">
-      <label for="hp" class="col-1 col-form-label">STR</label>
-      <div class="col-1">
-        <input name="name" class="form-control" type="text" [(ngModel)]="character.abilities.STR.raw">
-      </div>
-      <div class="col-1">
-        {{character.abilities.STR.raw}}
-      </div>
-      <div class="col-1">
-        {{character.abilities.STR.val}}
-      </div>
-      <div class="col-1">
-        {{character.abilities.STR.mod}}
-      </div>
+    <div *ngFor="let v of character.values" class="row">
+      <div class="col-2">{{v.key}}</div>
+      <div class="col-2">{{v.type}}</div>
+      <div class="col-2"><input name="name" class="form-control" type="number" [(ngModel)]="v.raw"></div>
+      <div class="col-2">{{v.bonus}}</div>
+      <div class="col-2">{{v.total}}</div>
     </div>
-    <div class="form-group row">
-      <label for="hp" class="col-1 col-form-label">CON</label>
-      <div class="col-1">
-        <input name="name" class="form-control" type="text" [(ngModel)]="character.abilities.CON.raw">
-      </div>
-      <div class="col-1">
-        {{character.abilities.CON.raw}}
-      </div>
-      <div class="col-1">
-        {{character.abilities.CON.val}}
-      </div>
-      <div class="col-1">
-        {{character.abilities.CON.mod}}
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="hp" class="col-1 col-form-label">HP</label>
-      <div class="col-1">
-        <input name="name" class="form-control" type="text" [(ngModel)]="character.hp">
-      </div>
-      <div class="col-1">
-        {{character.hp}}
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="hp" class="col-1 col-form-label">HP</label>
-      <div class="col-1">
-        <input name="name" class="form-control" type="text" [(ngModel)]="character.hp">
-      </div>
-      <div class="col-1">
-        {{character.hp}}
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="hp" class="col-1 col-form-label">HP</label>
-      <div class="col-1">
-        <input name="name" class="form-control" type="text" [(ngModel)]="character.hp">
-      </div>
-      <div class="col-1">
-        {{character.hp}}
-      </div>
-    </div>
-
   </div>
+
+  <h3>Add Effect</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-2">Target: </div>
+      <div class="col-2"><input name="name" class="form-control" type="text" [(ngModel)]="effect.target"></div>
+      <div class="col-2">Description :</div>
+      <div class="col-2"><input name="name" class="form-control" type="text" [(ngModel)]="effect.desc"></div>
+      <div class="col-1">Bonus :</div>
+      <div class="col-2"><input name="name" class="form-control" type="text" [(ngModel)]="effect.bonus"></div>
+      <div class="col-1"><button (click)="addEffect()">ADD</button></div>
+    </div>
+    <div class="row" *ngFor="let e of character.manual">
+      <div class="col-2">Target: </div>
+      <div class="col-2">{{e.target}}</div>
+      <div class="col-2">Description :</div>
+      <div class="col-2">{{e.desc}}</div>
+      <div class="col-1">Bonus:</div>
+      <div class="col-2">{{e.bonus}}</div>
+      <div class="col-1"><button (click)="deleteEffect(e)">DELETE</button></div>
+    </div>
+  </div>
+
+  <h3>Formula Test</h3>
+  <label for="hp" class="form-label">Formula</label>
+  <input name="name" class="form-control" type="text" [(ngModel)]="formula" (ngModelChange)="calcFormula()">
+  <button (click)="calcFormula()">Calculate</button> {{formula}} = {{result}} <span class="error">{{error}}</span>
+  <p>{{f | json}}</p>
+</div>

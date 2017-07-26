@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -14,6 +15,7 @@ import { CampaignListComponent } from './campaign-list/campaign-list.component';
 import { CampaignComponent } from './campaign/campaign.component';
 import { RulebookComponent } from './rulebook/rulebook.component';
 import { DbService } from './db.service';
+import { EngineService } from './engine.service';
 import { EditorComponent } from './editor/editor.component'
 import { TinymceModule } from 'angular2-tinymce';
 import { CampaignNavComponent } from './campaign-nav/campaign-nav.component';
@@ -35,6 +37,7 @@ const appRoutes: Routes = [
   { path: 'campaign/:id/npcs/:nid', component: CampaignComponent },
   { path: 'campaign/:id/rules', component: CampaignComponent },
   { path: 'campaign/:id/sessions', component: CampaignComponent },
+  { path: 'test', component: TestComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 ];
@@ -58,6 +61,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     FormsModule,
     ReactiveFormsModule,
     TagInputModule,
@@ -71,7 +75,7 @@ const appRoutes: Routes = [
       skin_url: '../assets/skins/lightgray'
     })
   ],
-  providers: [DbService],
+  providers: [DbService, EngineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

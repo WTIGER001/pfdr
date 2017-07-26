@@ -1,0 +1,20 @@
+{
+  "books": [{
+      "required": true,
+      "gamesystem": "Pathfinder",
+      "name": "Core Rules",
+      "image": "assets/images/rulebooks/pathfinder_core.png"
+    },
+    {
+      "required": true,
+      "gamesystem": "Pathfinder",
+      "name": "Mythic Adventures",
+      "image": "assets/images/rulebooks/mythic_adventures.jpg"
+    }, {
+      "required": true,
+      "gamesystem": "Pathfinder",
+      "name": "Advanced Race Guide",
+      "image": "assets/images/rulebooks/advanced_race_guide.jpg"
+    }
+  ]
+}

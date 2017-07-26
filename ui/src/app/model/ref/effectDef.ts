@@ -17,6 +17,11 @@ export class EffectDef {
         this._bonus = b
         this.formula = new Formula(b)
     }
+
+    public fromJson(o: EffectDef): EffectDef {
+        Object.assign(this, o)
+        return this
+    }
 }
 
 export class UserSelection {

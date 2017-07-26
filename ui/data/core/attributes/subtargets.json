@@ -1,78 +1,83 @@
 {
-    "sub_targets": [
-        {
-            "subkey": "TMP",
-            "stack": "stack",
-            "Name": "Temporary",
-            "desc": "",
-            "url": "",
-            "targets": [
-                "STR",
-                "CON",
-                "DEX",
-                "INT",
-                "WIS",
-                "CHA"
-            ]
-        },
-        {
-            "subkey": "DODGE",
-            "stack": "stack",
-            "Name": "Dodge",
-            "desc": "",
-            "url": "",
-            "targets": [
-                "AC",
-                "AC_FLAT",
-                "AC_TOUCH"
-            ]
-        },
-        {
-            "subkey": "ARMOR",
-            "stack": "max",
-            "Name": "Armor",
-            "desc": "",
-            "url": "",
-            "targets": [
-                "AC",
-                "AC_FLAT",
-                "AC_TOUCH"
-            ]
-        },
-        {
-            "subkey": "SHIELD",
-            "stack": "max",
-            "Name": "Shield",
-            "desc": "",
-            "url": "",
-            "targets": [
-                "AC",
-                "AC_FLAT",
-                "AC_TOUCH"
-            ]
-        },
-        {
-            "subkey": "SIZE",
-            "stack": "max",
-            "Name": "Profane",
-            "desc": "",
-            "url": "",
-            "targets": [
-                "AC",
-                "AC_FLAT",
-                "AC_TOUCH"
-            ]
-        },
-        {
-            "subkey": "NATURAL",
-            "stack": "max",
-            "Name": "Natural Armor",
-            "desc": "",
-            "url": "",
-            "targets": [
-                "AC",
-                "AC_FLAT"
-            ]
-        }
-    ]
+  "sub_targets": [{
+      "key": "TMP",
+      "stack": "stack",
+      "Name": "Temporary",
+      "desc": "",
+      "url": "",
+      "raw": 0,
+      "targets": [
+        "STR",
+        "CON",
+        "DEX",
+        "INT",
+        "WIS",
+        "CHA"
+      ]
+    },
+    {
+      "key": "DODGE",
+      "stack": "stack",
+      "Name": "Dodge",
+      "desc": "",
+      "url": "",
+      "raw": 0,
+      "targets": [
+        "AC",
+        "AC_FLAT",
+        "AC_TOUCH"
+      ]
+    },
+    {
+      "key": "ARMOR",
+      "stack": "max",
+      "Name": "Armor",
+      "desc": "",
+      "url": "",
+      "raw": 0,
+      "targets": [
+        "AC",
+        "AC_FLAT",
+        "AC_TOUCH"
+      ]
+    },
+    {
+      "key": "SHIELD",
+      "stack": "max",
+      "Name": "Shield",
+      "desc": "",
+      "url": "",
+      "raw": 0,
+      "targets": [
+        "AC",
+        "AC_FLAT",
+        "AC_TOUCH"
+      ]
+    },
+    {
+      "key": "SIZE",
+      "stack": "max",
+      "Name": "Profane",
+      "desc": "",
+      "url": "",
+      "raw": 0,
+      "targets": [
+        "AC",
+        "AC_FLAT",
+        "AC_TOUCH"
+      ]
+    },
+    {
+      "key": "NATURAL",
+      "stack": "max",
+      "Name": "Natural Armor",
+      "desc": "",
+      "url": "",
+      "raw": 0,
+      "targets": [
+        "AC",
+        "AC_FLAT"
+      ]
+    }
+  ]
 }

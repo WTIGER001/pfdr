@@ -68,7 +68,7 @@
 <div class="spacer formarea">
   <h1>Rule Books ({{campaign.rulebooks.length}} selected)</h1>
   <div class="list-items">
-    <div class="selectable-item" *ngFor="let book of db.rulebooks" (click)="selectBook(book)">
+    <div class="selectable-item" *ngFor="let book of db.books" (click)="selectBook(book)">
       <img src="{{book.image}}" width="150" [ngClass]="{'unselected': notSelected(book)}">
       <div class="text-overlay"><i class="fa fa-check fa-2x" aria-hidden="true" [hidden]="notSelected(book)"></i></div>
     </div>

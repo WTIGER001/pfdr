@@ -11,19 +11,20 @@ export class Formula {
 
     public parse() {
         let node = jsep(this.formula)
+
         let varNames = new Map<string, string>()
         let arrNames = new Map<string, string>()
         let fnNames = new Map<string, string>()
         this.nodeParse(node, varNames, arrNames, fnNames)
 
         varNames.forEach((v, k) => {
-            this.vars.push[k]
+            this.vars.push(k)
         });
         arrNames.forEach((v, k) => {
-            this.arrays.push[k]
+            this.arrays.push(k)
         });
         fnNames.forEach((v, k) => {
-            this.functions.push[k]
+            this.functions.push(k)
         });
     }
 
@@ -35,8 +36,12 @@ export class Formula {
             this.nodeParse(node.right, varNames, arrNames, fnNames)
         } else if (node.type === "Identifier") {
             varNames.set(node.name, node.name)
-        } else if (node.type === "MemberExpression") {
+        } else if (node.type === "MemberExpression" && node.computed == false) {
+            let bigname = node.object.name + "." + node.property.name
+            varNames.set(bigname, bigname)
+        } else if (node.type === "MemberExpression" && node.computed == true) {
             arrNames.set(node.object.name, node.object.name)
+            this.nodeParse(node.property, varNames, arrNames, fnNames)
         } else if (node.type === "CallExpression") {
             fnNames.set(node.callee.name, node.callee.name)
             for (let i = 0; i < node.arguments.length; i++) {
@@ -68,12 +73,27 @@ export class Formula {
             }
 
         } else if (node.type === "Identifier") {
-            return varValues.get(node.name)
-        } else if (node.type === "MemberExpression") {
+            let v = varValues.get(node.name)
+            if (v === undefined) {
+                throw "Unknown Value : " + node.name
+            }
+            return v
+        } else if (node.type === "MemberExpression" && node.computed == false) {
+            let name = node.object.name + "." + node.property.name
+            let v = varValues.get(name)
+            if (v === undefined) {
+                throw "Unknown Value : " + name
+            }
+            return v
+        } else if (node.type === "MemberExpression" && node.computed == true) {
             let arrayName = node.object.name
             let arrayIndex = this.nodeEval(node.property, varValues, arrayValues, fnValues)
             let arr = arrayValues.get(arrayName)
-            return arr[arrayIndex]
+            if (arr === undefined) {
+                throw "Unknown Array : " + arrayName
+            }
+
+            return arr.values[arrayIndex]
         } else if (node.type === "CallExpression") {
             let fName = node.callee.name
             let args = []
@@ -81,7 +101,10 @@ export class Formula {
                 args[i] = this.nodeEval(node.arguments[i], varValues, arrayValues, fnValues)
             }
             let fn = fnValues.get(fName)
-            let val = fn.call(this, args)
+            if (fn === undefined) {
+                throw "Unknown Function : " + fName
+            }
+            let val = fn.apply(null, args)
             return val;
         }
     }
@@ -89,7 +112,7 @@ export class Formula {
 /*
 
 type: 'MemberExpression'
-computed: true
+computed: true 
 object:
 type: 'Identifier'
 name: 'ABILITY_MODS'

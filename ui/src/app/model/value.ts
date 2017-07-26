@@ -1,13 +1,21 @@
 export class Value {
     public key: string
+    public type: string
     public raw: number
-    public limit_min: number = Number.MIN_VALUE
-    public limit_max: number = Number.MAX_VALUE
+    public limit_min: number = NaN
+    public limit_max: number = NaN
     public bonuses = new Array<number>()
     public stacking: StackingRule = StackingRule.NO_STACK_MAX
 
     public get total(): number {
-        return Math.min(this.limit_min, Math.max(this.limit_max, this.raw + this.bonus))
+        let t = Number(this.raw) + Number(this.bonus)
+        if (isNaN(this.limit_max) == false) {
+            t = Math.max(this.limit_max, t)
+        }
+        if (isNaN(this.limit_min) == false) {
+            t = Math.max(this.limit_min, t)
+        }
+        return t
     }
 
     public get bonus(): number {
@@ -60,4 +68,51 @@ export class CompositeValue extends Value {
 
 export enum StackingRule {
     NO_STACK_MAX, NO_STACK_MIN, STACK
+}
+
+export class Values implements Iterable<Value> {
+    public _vals = new Map<string, Value>()
+
+    public get(key: string) {
+        return this._vals.get(key.toLowerCase())
+    }
+
+    public set(v: Value) {
+        this._vals.set(v.key.toLowerCase(), v)
+    }
+
+    public forEach(fn: { (v: Value): void }) {
+        this._vals.forEach(fn);
+    }
+
+    public clearBonuses() {
+        this._vals.forEach(v => {
+            v.bonuses.splice(0, v.bonuses.length)
+        });
+    }
+
+    public getTypes(): string[] {
+        let a = new Map<string, string>()
+
+        this._vals.forEach(v => {
+            a.set(v.type, v.type)
+        });
+
+        let b = new Array<string>()
+        a.forEach((v, k) => {
+            b.push(k)
+        })
+
+        return b
+    }
+
+    [Symbol.iterator]() {
+        let it = this._vals.values();
+        return {
+            next(): IteratorResult<Value> {
+                return it.next()
+            }
+
+        }
+    }
 }
