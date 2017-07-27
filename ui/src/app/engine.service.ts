@@ -32,6 +32,7 @@ export class EngineService {
     this.addEffectSource(this.fromConditions)
     this.addEffectSource(this.fromSpells)
     this.addEffectSource(this.fromManual)
+    this.addEffectSource(this.fromSubTarget)
 
     this.addComputeFunction("max", Math.max)
   }
@@ -129,12 +130,12 @@ export class EngineService {
     });
 
     // Apply the sub target to the targets
-    c.values.forEach(v => {
-      let a = v.key.split(".")
-      if (a.length == 2) {
-        c.values.get(a[0]).bonuses.push(v.total)
-      }
-    })
+    // c.values.forEach(v => {
+    //   let a = v.key.split(".")
+    //   if (a.length == 2) {
+    //     c.values.get(a[0]).bonuses.push(v.total)
+    //   }
+    // })
 
   }
 
@@ -208,6 +209,19 @@ export class EngineService {
     chr.manual.forEach(e => {
       coll.add(e)
     })
+  }
+
+  private fromSubTarget(chr: Character, coll: Collector) {
+    chr.values.forEach(v => {
+      let a = v.key.split(".")
+      if (a.length == 2) {
+        let e = new EffectDef()
+        e.bonus = v.key
+        e.target = a[0]
+        coll.add(e)
+      }
+    });
+
   }
 
   private fromClassLevels(chr: Character, coll: Collector) {
