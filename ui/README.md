@@ -127,6 +127,7 @@ Targets are defined in a JSON file.
 * key - the Key for this value (e.g. AC,...)
 * values - collection of contributing values (map)
 
+
 ### Data Flow
 
 1. Collect all the EffectDefinitions from the character
@@ -145,9 +146,11 @@ Targets are defined in a JSON file.
 * Add "charges" based on level
 * Add a weapon and/or attack
 
-## Application Design 
+## Application Design Notes
 
-Use Google
+* Alternate Character Sheets - Have the ability to have alternate character sheets with any number of changes (conditions, size, spells, etc). Saved so they can be quicky referenced. FOr the print version ONLY Print the differences (saving throws, etc. )
+
+
 
 ### Mobile
 

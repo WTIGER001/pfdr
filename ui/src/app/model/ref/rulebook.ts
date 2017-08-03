@@ -36,16 +36,11 @@ export class Rule {
     public fromJson(o: Rule): Rule {
         Object.assign(this, o)
         this.effects = new Array<EffectDef>()
-
         if (o.effects) {
             for (let i = 0; i < o.effects.length; i++) {
                 this.effects.push(new EffectDef().fromJson(o.effects[i]))
             }
-            o.effects.forEach(e => {
-
-            });
         }
-
         return this
     }
 }

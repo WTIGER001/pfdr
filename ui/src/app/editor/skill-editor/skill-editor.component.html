@@ -1,0 +1,18 @@
+<div class="row" *ngIf="skill; else header">
+  <div class="item name ml-3" triggers="mouseenter:mouseleave" [ngbPopover]="getHelp()"><i class="fa fa-lock" aria-hidden="true" *ngIf="!skill.untrained"></i><i class="fa fa-unlock-alt" aria-hidden="true" *ngIf="skill.untrained"></i>    {{skill.name}}</div>
+  <div class="item "><input name="name " class="form-control form-control-sm score " type="number" min=0 max=50 [(ngModel)]="skill.raw " (change)="changed(event) "></div>
+  <div class="item text ml-1 ">{{getAbility()}}</div>
+  <div class="item text ml-1 "> {{skill.bonus|plus}} </div>
+  <div class="item text ml-1 ">{{skill.total}}</div>
+  <div class="item text ml-1 "><i class="fa fa-shield" aria-hidden="true" *ngIf="skill.acp"></i></div>
+</div>
+<ng-template #header>
+  <div class="row ">
+    <div class="item name ml-1 "></div>
+    <div class="item text">Ranks</div>
+    <div class="item text ml-1 ">Ability</div>
+    <div class="item text ml-1 ">Bonus</div>
+    <div class="item text ml-1 ">Total</div>
+    <div class="item text ml-1 ">ACP</div>
+  </div>
+</ng-template>

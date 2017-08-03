@@ -1,0 +1,32 @@
+{
+  "name": "Character Editor",
+  "panels": [{
+      "title": "Ability Scores",
+      "controls": [{
+        "type": "value-spinner",
+        "model": "values['STR']"
+      }, {
+        "type": "value-spinner",
+        "model": "values['DEX']"
+      }, {
+        "type": "value-spinner",
+        "model": "values['CON']"
+      }, {
+        "type": "value-spinner",
+        "model": "values['INT']"
+      } {
+        "type": "value-spinner",
+        "model": "values['WIS']"
+      } {
+        "type": "value-spinner",
+        "model": "values['CHA']"
+      }]
+
+
+    }
+
+
+  ]
+
+
+}

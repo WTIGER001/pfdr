@@ -26,6 +26,11 @@ import { ListDetailComponent } from './utilities/list-detail/list-detail.compone
 import { SkillsComponent } from './character/skills/skills.component';
 import { CalcExplainComponent } from './utilities/calc-explain/calc-explain.component';
 import { TestComponent } from './test/test.component';
+import { ValueEditComponent } from './/editor/value-edit/value-edit.component';
+import { CharacterNavComponent } from './character/character-nav/character-nav.component';
+import { AbilityScoreEditorComponent } from './editor/ability-score-editor/ability-score-editor.component';
+import { SkillEditorComponent } from './editor/skill-editor/skill-editor.component';
+import { PlusPipe } from './plus.pipe';
 
 const appRoutes: Routes = [
   { path: 'home', component: CampaignListComponent },
@@ -57,7 +62,12 @@ const appRoutes: Routes = [
     ListDetailComponent,
     SkillsComponent,
     CalcExplainComponent,
-    TestComponent
+    TestComponent,
+    ValueEditComponent,
+    CharacterNavComponent,
+    AbilityScoreEditorComponent,
+    SkillEditorComponent,
+    PlusPipe
   ],
   imports: [
     BrowserModule,

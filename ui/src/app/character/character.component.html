@@ -1,110 +1,122 @@
 <div class="backdrop full"> </div>
+<div class="container-fluid" *ngIf="ready">
+  <div class="row">
+    <div class="col-md-2 col-lg-1">
+      <app-character-nav></app-character-nav>
+    </div>
+    <div class="col-md-10 col-lg-11">
+      <div class="row">
+        <div class="col-md-5 col-lg-4 bordered m-2">
+          <h5>Personal</h5>
+          <div class="form-group row mb-0">
+            <label for="character-name" class="col-2 col-form-label-sm">Name</label>
+            <div class="col-10">
+              <input name="name" class="form-control form-control-sm" type="text" [(ngModel)]="character.name">
+            </div>
+          </div>
+          <div class="form-group row mb-0">
+            <label for="character-race" class="col-2 col-form-label-sm">Race</label>
+            <div class="col-10">
+              <input name="race" class="form-control form-control-sm" type="text" [(ngModel)]="character.personal.race">
+            </div>
+          </div>
+          <div class="form-group row mb-0">
+            <label for="character-alignment" class="col-2 col-form-label-sm">Alignment</label>
+            <div class="col-10">
+              <input name="alignment" class="form-control form-control-sm" type="text" [(ngModel)]="character.personal.alignment">
+            </div>
+          </div>
+          <div class="form-group row  mb-0">
+            <label for="character-alignment" class="col-2 col-form-label">Gender</label>
+            <div class="col-4">
+              <input name="gender" class="form-control form-control-sm" type="text" [(ngModel)]="character.personal.gender">
+            </div>
+            <label for="character-alignment" class="col-2 col-form-label">Eye</label>
+            <div class="col-4">
+              <input name="eye" class="form-control form-control-sm" type="text" [(ngModel)]="character.personal.eye">
+            </div>
+          </div>
+          <div class="form-group row  mb-0">
+            <label for="character-alignment" class="col-2 col-form-label">Height</label>
+            <div class="col-4">
+              <input name="height" class="form-control form-control-sm" type="text" [(ngModel)]="character.personal.height">
+            </div>
+            <label for="character-alignment" class="col-2 col-form-label">Weight</label>
+            <div class="col-4">
+              <input name="weight" class="form-control form-control-sm" type="text" [(ngModel)]="character.personal.weight">
+            </div>
+          </div>
+          <div class="form-group row  mb-0">
+            <label for="character-alignment" class="col-2 col-form-label">Skin</label>
+            <div class="col-4">
+              <input name="skin" class="form-control form-control-sm" type="text" [(ngModel)]="character.personal.Skin">
+            </div>
+            <label for="character-alignment" class="col-2 col-form-label">Age</label>
+            <div class="col-4">
+              <input name="age" class="form-control form-control-sm" type="text" [(ngModel)]="character.personal.age">
+            </div>
+          </div>
+          <div class="form-group row  mb-0">
+            <label for="character-alignment" class="col-2 col-form-label">Handed</label>
+            <div class="col-4">
+              <input name="handed" class="form-control form-control-sm" type="text" [(ngModel)]="character.personal.handed">
+            </div>
+            <label for="character-alignment" class="col-2 col-form-label">Diety</label>
+            <div class="col-4">
+              <input name="diety" class="form-control form-control-sm" type="text" [(ngModel)]="character.personal.diety">
+            </div>
+          </div>
+          <div class="form-group row  mb-0">
+            <label for="character-alignment" class="col-2 col-form-label">Homeland</label>
+            <div class="col-10">
+              <input name="homeland" class="form-control form-control-sm" type="text" [(ngModel)]="character.personal.homeland">
+            </div>
+          </div>
+        </div>
 
-<div class="area col-sm-4 col-4">
-  <h5>Personal</h5>
-  <div class="form-group row">
-    <label for="character-name" class="col-2 col-form-label">Name</label>
-    <div class="col-10">
-      <input name="name" class="form-control" type="text" [(ngModel)]="character.name">
+        <div class="col-md-5 col-lg-4 bordered m-2">
+          <h5>Ability Scores</h5>
+          <app-ability-score-editor></app-ability-score-editor>
+          <app-ability-score-editor [character]="character" ability="STR"></app-ability-score-editor>
+          <app-ability-score-editor [character]="character" ability="DEX"></app-ability-score-editor>
+          <app-ability-score-editor [character]="character" ability="CON"></app-ability-score-editor>
+          <app-ability-score-editor [character]="character" ability="INT"></app-ability-score-editor>
+          <app-ability-score-editor [character]="character" ability="WIS"></app-ability-score-editor>
+          <app-ability-score-editor [character]="character" ability="CHA"></app-ability-score-editor>
+        </div>
+
+        <div class="col-md-10 col-lg-8 bordered m-2">
+          <h5>Skills</h5>
+          <app-skills [character]="character"></app-skills>
+        </div>
+
+        <div class="col-md-5 col-lg-4 bordered m-2">
+          <h5>Classes</h5>
+
+        </div>
+
+        <div class="col-md-5 col-lg-4 bordered m-2">
+          <h5>Feats</h5>
+
+        </div>
+
+
+
+        <div class="col-md-5 col-lg-4 bordered m-2">
+          <h5>Conditions</h5>
+
+        </div>
+
+        <div class="col-md-5 col-lg-4 bordered m-2">
+          <h5>Special Abilities</h5>
+
+        </div>
+
+        <div class="col-md-5 col-lg-4 bordered m-2">
+          <h5>Equipment</h5>
+
+        </div>
+      </div>
     </div>
   </div>
-  <div class="form-group row">
-    <label for="character-race" class="col-2 col-form-label">Race</label>
-    <div class="col-10">
-      <input name="race" class="form-control" type="text" [(ngModel)]="character.personal.race">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="character-alignment" class="col-2 col-form-label">Alignment</label>
-    <div class="col-10">
-      <input name="alignment" class="form-control" type="text" [(ngModel)]="character.personal.alignment">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="character-alignment" class="col-2 col-form-label">Gender</label>
-    <div class="col-4">
-      <input name="gender" class="form-control" type="text" [(ngModel)]="character.personal.gender">
-    </div>
-    <label for="character-alignment" class="col-2 col-form-label">Eye</label>
-    <div class="col-4">
-      <input name="eye" class="form-control" type="text" [(ngModel)]="character.personal.eye">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="character-alignment" class="col-2 col-form-label">Height</label>
-    <div class="col-4">
-      <input name="height" class="form-control" type="text" [(ngModel)]="character.personal.height">
-    </div>
-    <label for="character-alignment" class="col-2 col-form-label">Weight</label>
-    <div class="col-4">
-      <input name="weight" class="form-control" type="text" [(ngModel)]="character.personal.weight">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="character-alignment" class="col-2 col-form-label">Skin</label>
-    <div class="col-4">
-      <input name="skin" class="form-control" type="text" [(ngModel)]="character.personal.Skin">
-    </div>
-    <label for="character-alignment" class="col-2 col-form-label">Age</label>
-    <div class="col-4">
-      <input name="age" class="form-control" type="text" [(ngModel)]="character.personal.age">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="character-alignment" class="col-2 col-form-label">Handed</label>
-    <div class="col-4">
-      <input name="handed" class="form-control" type="text" [(ngModel)]="character.personal.handed">
-    </div>
-    <label for="character-alignment" class="col-2 col-form-label">Diety</label>
-    <div class="col-4">
-      <input name="diety" class="form-control" type="text" [(ngModel)]="character.personal.diety">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="character-alignment" class="col-2 col-form-label">Handed</label>
-    <div class="col-10">
-      <input name="homeland" class="form-control" type="text" [(ngModel)]="character.personal.homeland">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="character-alignment" class="col-2 col-form-label">Background</label>
-    <div class="col-10">
-      <input name="background" class="form-control" type="text" [(ngModel)]="character.personal.background">
-    </div>
-  </div>
-</div>
-
-<div class="area col-sm-4 col-4">
-  <h5>Sketch</h5>
-  <img class="centered-pic pic-border" src="/assets/images/classes/dwarf_fighter.jpg" />
-</div>
-
-<div class="spacer formarea">
-  <h5>Classes</h5>
-
-</div>
-
-<div class="spacer formarea">
-  <h5>Feats</h5>
-
-</div>
-
-<div class="spacer formarea">
-  <h5>Skills</h5>
-
-</div>
-
-<div class="spacer formarea">
-  <h5>Conditions</h5>
-
-</div>
-
-<div class="spacer formarea">
-  <h5>Special Abilities</h5>
-
-</div>
-
-<div class="spacer formarea">
-  <h5>Equipment</h5>
-
 </div>

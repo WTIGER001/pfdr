@@ -1,11 +1,10 @@
 // Contains the reference data
 import { Book } from "./book";
-import { User, Campaign, RuleBook, Character, Target, Subtarget, NamedArray, Rule } from '../model'
+import { User, Campaign, RuleBook, Character, Target, Subtarget, NamedArray, Rule, Race } from '../model'
 import { ClassDef } from './ref/classDef'
+import { SkillDef } from './ref/skillDef'
 
 export class Database {
-
-
 
     public named_arrays: NamedArray[] = new Array()
     public targets: Target[] = new Array()
@@ -13,11 +12,15 @@ export class Database {
     public classes: ClassDef[] = new Array()
     public books: Book[] = new Array()
     public rules: Rule[] = new Array()
+    public skills: SkillDef[] = new Array()
+    public races: Race[] = new Array()
 
     public namedArraysMap = new Map<string, Array<number>>()
     public targetsMap = new Map<string, Target>()
     public subtargetsMap = new Map<string, Subtarget>()
     public classesMap = new Map<string, ClassDef>()
+    public skillMap = new Map<string, SkillDef>()
+    public raceMap = new Map<string, Race>()
 
     public fromJson(d: Database): Database {
         d.named_arrays.forEach(a => {
@@ -32,11 +35,17 @@ export class Database {
         d.classes.forEach(a => {
             this.classes.push(new ClassDef().fromJson(a))
         })
+        d.skills.forEach(a => {
+            this.skills.push(new SkillDef().fromJson(a))
+        })
         d.books.forEach(a => {
             this.books.push(Object.assign(new Book(), a))
         })
         d.rules.forEach(a => {
             this.rules.push(new Rule().fromJson(a))
+        })
+        d.races.forEach(a => {
+            this.races.push(new Race().fromJson(a))
         })
         return this
     }
@@ -46,6 +55,8 @@ export class Database {
         this.targetsMap = this.index1(this.targets)
         this.subtargetsMap = this.index1(this.sub_targets)
         this.classesMap = this.index1(this.classes)
+        this.skillMap = this.index1(this.skills)
+        this.raceMap = this.index1(this.races)
 
         this.cleanUp()
     }

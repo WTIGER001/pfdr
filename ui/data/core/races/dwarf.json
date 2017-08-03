@@ -1,0 +1,92 @@
+{
+  "name": "Dwarf",
+  "size": "medium",
+  "type": "humanoid",
+  "subtype": "dwarf",
+  "speed": "20",
+  "languages": [
+    "Common", "Dwarven"
+  ],
+  "language_choices": [
+    "Giant", "Gnome", "Goblin", "Orc", "Terran", "Undercommon"
+  ],
+  "effects": [{
+    "name": "Race +2 Con",
+    "bonus": "2",
+    "target": "CON",
+    "type": "Racial Ability Score"
+  }, {
+    "name": "Race +2 WIS",
+    "bonus": "2",
+    "target": "WIS",
+    "type": "Racial Ability Score"
+  }, {
+    "name": "Race -2 CHA",
+    "bonus": "-2",
+    "target": "CHA",
+    "type": "Racial Ability Score"
+  }, {
+    "name": "Defensive Training",
+    "desc": "Dwarves gain a +4 dodge bonus to AC against monsters of the giant subtype.",
+    "bonus": "4",
+    "target": "AC.DODGE",
+    "when": "enemy = giant",
+    "type": "Racial Trait",
+    "rp": 1
+  }, {
+    "name": "Hardy",
+    "desc": "Dwarves gain a +2 racial bonus on saving throws against poison, spells, and spell-like abilities.",
+    "type": "Racial Trait",
+    "rp": 1
+  }, {
+    "name": "Stability (Bull Rush)",
+    "desc": "Dwarves gain a +4 racial bonus to their Combat Maneuver Defense when resisting a bull rush or trip attempt while standing on the ground.",
+    "type": "Racial Trait",
+    "bonus": "4",
+    "target": "CMD_BULL.RACIAL"
+  }, {
+    "name": "Stability (Bull Trip)",
+    "desc": "Dwarves gain a +4 racial bonus to their Combat Maneuver Defense when resisting a bull rush or trip attempt while standing on the ground.",
+    "type": "Racial Trait",
+    "bonus": "4",
+    "target": "CMD_TRIP.RACIAL"
+  }, {
+    "name": "Greed",
+    "desc": "Dwarves gain a +2 racial bonus on Appraise checks made to determine the price of non-magical goods that contain precious metals or gemstones.",
+    "type": "Racial Trait",
+    "rp": 1
+  }, {
+    "name": "Stonecunning",
+    "desc": "Dwarves gain a +2 bonus on Perception checks to notice unusual stonework, such as traps and hidden doors located in stone walls or floors. They receive a check to notice such features whenever they pass within 10 feet of them, whether or not they are actively looking",
+    "type": "Racial Trait",
+    "rp": 1
+  }, {
+    "name": "Darkvision",
+    "desc": "Dwarves can see perfectly in the dark up to 60 feet.",
+    "type": "Racial Trait",
+    "rp": 1
+  }],
+  "subtypes": [{
+      "name": "Deep Delver",
+      "desc": "Dwarves living far below the earth have the minesight and deep warrior racial traits. Deep delver spellcasters may exchange stonecunning for the stonesinger trait."
+    },
+    {
+      "name": "Elder Dwarf",
+      "desc": "Traditionalist dwarves of ancient lineage have the ancient enmity, lorekeeper, and either the magic resistant or stubborn racial traits."
+    },
+    {
+      "name": "Exiled Dwarf",
+      "desc": "Dwarves who have lost their homelands usually have the relentless and stubborn racial traits, and often have wyrmscourged as well."
+    },
+    {
+      "name": "Mountain Dwarf",
+      "desc": "Dwarves living atop high peaks have the mountaineer racial trait and often surface survivalist as well. Mountain dwarves are also trained to defend their homes, and may take the sky sentinel and xenophobic traits instead."
+    }
+  ],
+  "favored_classes": [{
+    "name": "Cavalier",
+    "desc": "Add +1/2 to the cavalier’s bonus to damage against targets of his challenge."
+  }],
+  "racial_archetypes": [],
+  "racial_feats": []
+}

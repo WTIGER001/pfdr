@@ -59,4 +59,8 @@ export class TestComponent implements OnInit {
       this.error = error
     }
   }
+
+  public get ready(): boolean {
+    return this.character != undefined
+  }
 }

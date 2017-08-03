@@ -1,0 +1,16 @@
+<div class="row" *ngIf="ability; else header">
+  <div class="item text ml-1" triggers="mouseenter:mouseleave" [ngbPopover]="getHelp()">{{v.key}}</div>
+  <div class="item"><input name="name" class="form-control form-control-sm score" type="number" min=0 max=50 [(ngModel)]="v.raw" (change)="changed(event)"></div>
+  <div class="item text ml-1"> +{{v.bonus}} </div>
+  <div class="item text ml-1"> {{v.total}}</div>
+  <div class="item text ml-1">{{getMod().total}}</div>
+</div>
+<ng-template #header>
+  <div class="row">
+    <div class="item text ml-1"></div>
+    <div class="item">Score</div>
+    <div class="item text ml-1">Bonus</div>
+    <div class="item text ml-1">Total</div>
+    <div class="item text ml-1">Mod</div>
+  </div>
+</ng-template>

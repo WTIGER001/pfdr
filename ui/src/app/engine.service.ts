@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Character, ClassLevel, Value, CompositeValue, RuleBook, Target, Subtarget, StackingRule, Database, Rule } from './model'
+import { Character, ClassLevel, Value, CompositeValue, RuleBook, Target, Subtarget, StackingRule, Database, Rule, Skill } from './model'
 import { Formula } from './model/formula'
 import { Collector, Warning, SEVERITY } from './model/calc/calcEffects'
 import { ClassDef, ClassLevelDef } from './model/ref/classDef'
@@ -31,6 +31,7 @@ export class EngineService {
     this.addEffectSource(this.fromGear)
     this.addEffectSource(this.fromConditions)
     this.addEffectSource(this.fromSpells)
+    this.addEffectSource(this.fromSkills)
     this.addEffectSource(this.fromManual)
     this.addEffectSource(this.fromSubTarget)
 
@@ -84,7 +85,7 @@ export class EngineService {
     })
 
     let result = formula.evaluate(varValues, arrValues, fnValues)
-    console.log("Formula Evaluation: " + formula.formula + " => " + result)
+    //console.log("Formula Evaluation: " + formula.formula + " => " + result)
 
     return result
   }
@@ -107,6 +108,8 @@ export class EngineService {
    * Calculate takes the inputs 
    */
   public calculate(c: Character) {
+    console.log("Calculating Character");
+
     // Collect all the effects
     const collector = this.collectEffects(c)
 
@@ -119,6 +122,7 @@ export class EngineService {
 
     // Iterate over the values and generate the bonuses
     collector.effects.forEach(effect => {
+      // console.log("PROCESSING: " + JSON.stringify(effect));
 
       // Evaluate the Effect
       let x = this.evaluateFormula(c, effect.formula)
@@ -128,15 +132,6 @@ export class EngineService {
 
       v.bonuses.push(x)
     });
-
-    // Apply the sub target to the targets
-    // c.values.forEach(v => {
-    //   let a = v.key.split(".")
-    //   if (a.length == 2) {
-    //     c.values.get(a[0]).bonuses.push(v.total)
-    //   }
-    // })
-
   }
 
 
@@ -146,9 +141,7 @@ export class EngineService {
   }
 
   public calcEffectsfromAbilities(c: Character) {
-    // c.abilities.items().forEach((v: Ability, k: string) => {
 
-    // });
   }
 
   public collectEffects(c: Character): Collector {
@@ -169,15 +162,15 @@ export class EngineService {
     })
   }
   private fromAbilityScores(chr: Character, coll: Collector) {
-    // chr.abilities.items().forEach((v: Ability, k: string) => {
-    //   let e = new EffectDef();
-    //   e.target = v.abbr + "_mod"
-    //   e.bonus = ""
-    // });
+
   }
 
   private fromRace(chr: Character, coll: Collector) {
+    let r = chr.personal.race
+    this.database.raceMap.get(r)
+    if (r == undefined) {
 
+    }
   }
 
   private fromSpells(chr: Character, coll: Collector) {
@@ -202,9 +195,21 @@ export class EngineService {
 
   }
 
-  private fromConditions(chr: Character, coll: Collector) {
+  private fromSkills(chr: Character, coll: Collector) {
+    chr.values.forEach(v => {
+      if (v.type === "Skill") {
+        let name = this.toName(v.key)
+        // console.log("NAME : " + name + " FROM " + v.key);
 
+        let skill = this.database.skillMap.get(name)
+        let e = new EffectDef()
+        e.bonus = skill.ability.toUpperCase() + "_MOD"
+        e.target = v.key
+        coll.add(e)
+      }
+    });
   }
+
   private fromManual(chr: Character, coll: Collector) {
     chr.manual.forEach(e => {
       coll.add(e)
@@ -224,10 +229,34 @@ export class EngineService {
 
   }
 
+  private fromConditions(chr: Character, coll: Collector) {
+
+  }
+
   private fromClassLevels(chr: Character, coll: Collector) {
+    let classNames = new Map<string, string>()
     chr.levels.forEach(level => {
+      classNames.set(level.pcClass, level.pcClass)
       this.fromClassLevel(level, coll)
     });
+
+    classNames.forEach((v, k) => {
+      let cd: ClassDef = this.rules.getClassDef(k)
+      if (cd == undefined) {
+        coll.add(new Warning(SEVERITY.CRITICAL, "No Class Definition found for " + k))
+        return
+      }
+
+      cd.class_skills.forEach(skillName => {
+        // Create the effect for class level
+        let e = new EffectDef()
+        e.bonus = "3"
+        e.target = skillName + ".CLASS"
+        coll.add(e)
+      })
+
+    })
+
   }
 
   /**
@@ -271,7 +300,32 @@ export class EngineService {
     let c = new Character();
     this.addTargets(c)
     this.addSubTargets(c)
+    this.addSkills(c)
     return c
+  }
+
+  public addSkills(c: Character) {
+    // this.database.skills.forEach(t => {
+    //   let v = new Value()
+    //   v.key = this.toKey(t.name)
+    //   v.stacking = StackingRule.STACK
+    //   v.type = "Skill"
+    //   v["name"] = t.name
+    //   v.raw = 0
+    //   c.values.set(v)
+    // });
+
+    this.database.skills.forEach(skl => {
+      if (skl.category == false) {
+        let skill = new Skill().fromDef(skl)
+        skill.key = this.toKey(skl.name)
+        skill.stacking = StackingRule.STACK
+        skill.type = "Skill"
+        skill.raw = 0
+        c.values.set(skill)
+      }
+    });
+
   }
 
   public addTargets(c: Character) {
@@ -311,4 +365,15 @@ export class EngineService {
     });
   }
 
+  public toKey(name: string): string {
+    return name.replace(" ", "__").replace(" ", "__").replace(" ", "__").replace("(", "_").replace(")", "")
+  }
+  public toName(key: string): string {
+    let k = key.replace("__", " ").replace("__", " ").replace("__", " ")
+    if (k.includes("_")) {
+      k = k.replace("_", "(")
+      k = k + ")"
+    }
+    return k
+  }
 }

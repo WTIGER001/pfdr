@@ -1,9 +1,14 @@
 .area {
-    border: 3px solid #595959;
-    margin: 10px;
-    padding: 10px;
-    background-image: url("../../assets/images/parchment2.jpg");
-    display: inline-block;
-    position: relative;
-    vertical-align: top;
+  border: 3px solid #595959;
+  margin: 10px;
+  padding: 10px;
+  background-image: url("../../assets/images/parchment2.jpg");
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+}
+
+.bordered {
+  border: 3px solid #595959;
+  background-image: url("../../assets/images/parchment2.jpg");
 }

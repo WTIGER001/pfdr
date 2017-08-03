@@ -1,0 +1,194 @@
+{
+  "skills": [{
+      "name": "Acrobatics",
+      "untrained": true,
+      "acp": true,
+      "ability": "Dex"
+    },
+    {
+      "name": "Appraise",
+      "untrained": true,
+      "acp": false,
+      "ability": "Int"
+    },
+    {
+      "name": "Bluff",
+      "untrained": true,
+      "acp": false,
+      "ability": "Cha"
+    },
+    {
+      "name": "Climb",
+      "untrained": true,
+      "acp": true,
+      "ability": "Str"
+    },
+    {
+      "name": "Diplomacy",
+      "untrained": true,
+      "acp": false,
+      "ability": "Cha"
+    },
+    {
+      "name": "Disable Device",
+      "untrained": false,
+      "acp": true,
+      "ability": "Dex"
+    },
+    {
+      "name": "Disguise",
+      "untrained": true,
+      "acp": false,
+      "ability": "Cha"
+    },
+    {
+      "name": "Escape Artist",
+      "untrained": true,
+      "acp": true,
+      "ability": "Dex"
+    },
+    {
+      "name": "Fly",
+      "untrained": true,
+      "acp": true,
+      "ability": "Dex"
+    },
+    {
+      "name": "Handle Animal",
+      "untrained": false,
+      "acp": false,
+      "ability": "Cha"
+    },
+    {
+      "name": "Heal",
+      "untrained": true,
+      "acp": false,
+      "ability": "Wis"
+    },
+    {
+      "name": "Intimidate",
+      "untrained": true,
+      "acp": false,
+      "ability": "Cha"
+    },
+    {
+      "name": "Linguistics",
+      "untrained": false,
+      "acp": false,
+      "ability": "Int"
+    },
+    {
+      "name": "Perception",
+      "untrained": true,
+      "acp": false,
+      "ability": "Wis"
+    },
+    {
+      "name": "Ride",
+      "untrained": true,
+      "acp": true,
+      "ability": "Dex"
+    },
+    {
+      "name": "Sense Motive",
+      "untrained": true,
+      "acp": false,
+      "ability": "Wis"
+    },
+    {
+      "name": "Sleight of Hand",
+      "untrained": false,
+      "acp": true,
+      "ability": "Dex"
+    },
+    {
+      "name": "Spellcraft",
+      "untrained": false,
+      "acp": false,
+      "ability": "Int"
+    },
+    {
+      "name": "Stealth",
+      "untrained": true,
+      "acp": true,
+      "ability": "Dex"
+    },
+    {
+      "name": "Survival",
+      "untrained": true,
+      "acp": false,
+      "ability": "Wis"
+    },
+    {
+      "name": "Swim",
+      "untrained": true,
+      "acp": true,
+      "ability": "Str"
+    },
+    {
+      "name": "Use Magic Device",
+      "untrained": false,
+      "acp": false,
+      "ability": "Cha"
+    },
+    {
+      "name": "Craft",
+      "category": true,
+      "allow_new": true,
+      "untrained": true,
+      "acp": false,
+      "ability": "Int",
+      "choices": [
+        "alchemy", "armor", "baskets", "books", "bows", "calligraphy", "carpentry", "cloth", "clothing",
+        "glass", "jewelry", "leather", "locks", "paintings", "pottery", "sculptures", "ships", "shoes",
+        "stonemasonry", "traps", "weapons"
+      ]
+    },
+    {
+      "name": "Profession",
+      "category": true,
+      "allow_new": true,
+      "untrained": false,
+      "acp": false,
+      "ability": "Wis",
+      "choices": [
+        "architect", "baker", "barrister", "brewer", "butcher", "clerk",
+        "cook", "courtesan", "driver", "engineer", "farmer", "fisherman", "gambler",
+        "gardener", "herbalist", "innkeeper", "librarian", "merchant", "midwife", "miller",
+        "miner", "porter", "sailor", "scribe", "shepherd", "stable master", "soldier", "tanner",
+        "trapper", "woodcutter"
+      ]
+    },
+    {
+      "name": "Perform",
+      "category": true,
+      "allow_new": true,
+      "untrained": true,
+      "acp": false,
+      "ability": "Cha",
+      "choices": [
+        "Act", "Comedy", "Dance", "Keyboard", "Oratory", "Percussion instruments", "String instruments", "Wind instruments", "Sing"
+      ]
+    },
+    {
+      "name": "Knowledge (religion)",
+      "category": true,
+      "allow_new": true,
+      "untrained": false,
+      "acp": false,
+      "ability": "Int",
+      "choices": [
+        "Arcana",
+        "Dungeoneering",
+        "Engineering",
+        "Geography",
+        "History",
+        "Local",
+        "Nature",
+        "Nobility",
+        "Planes",
+        "Religion"
+      ]
+    }
+  ]
+}

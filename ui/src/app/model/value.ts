@@ -106,6 +106,16 @@ export class Values implements Iterable<Value> {
         return b
     }
 
+    public getType(type: string): Value[] {
+        let a = new Array<Value>()
+        this._vals.forEach(v => {
+            if (v.type.toLocaleLowerCase() == type.toLocaleLowerCase()) {
+                a.push(v)
+            }
+        });
+        return a
+    }
+
     [Symbol.iterator]() {
         let it = this._vals.values();
         return {

@@ -1,5 +1,6 @@
 import { Value, CompositeValue, Values } from './value'
 import { EffectDef } from '../model/ref/effectDef'
+import { SkillDef } from '../model/ref/skillDef'
 
 export class Character {
     public id: string
@@ -7,7 +8,7 @@ export class Character {
     // public abilities = new Abilities()
     public personal = new PersonalInfo()
     public levels: ClassLevel[] = new Array
-    public skills: Skills = new Skills()
+    public skills: Skill[] = new Array()
     public feats = ""
     public conditions = ""
     public specialAbilities = ""
@@ -22,57 +23,28 @@ export class Character {
     public manual = new Array<EffectDef>()
 }
 
-// export class Abilities {
-//     private data = new Map<string, Ability>()
-//     constructor() {
-//         this.set("str", this.STR);
-//         this.set("dex", this.DEX);
-//         this.set("con", this.CON);
-//         this.set("int", this.INT);
-//         this.set("wis", this.WIS);
-//         this.set("cha", this.CHA);
-//     }
-
-//     public items(): Map<string, Ability> {
-//         return this.data
-//     }
-//     public set(k, v) {
-//         this.data.set(k, v)
-//     }
-//     public get(k: string): Ability {
-//         return this.data.get(k)
-//     }
-//     public STR = new Ability("Strength", "STR")
-//     public DEX = new Ability("Dexterity", "DEX")
-//     public CON = new Ability("Constitution", "CON")
-//     public WIS = new Ability("Wisdom", "WIS")
-//     public INT = new Ability("Intelligence", "INT")
-//     public CHA = new Ability("Strength", "CHA")
-
-// }
-
-// export class Ability {
-//     public raw: number
-//     public mod: number
-//     public val: number
-//     constructor(public name: String, public abbr) {
-
-//     }
-// }
-
-
 export class Skills {
     public skills: Skill[] = new Array()
 }
 
-export class Skill {
+export class Skill extends Value {
     public name: string
     public source: string
-    public rank: number
-    public isClassSkill: boolean
-    public isACP: boolean
-    public miscMod: number
-    public ablility: string
+    public acp: boolean
+    public ability: string
+    public untrained: boolean
+    public category: boolean
+    public choice: string
+
+    public fromDef(skl: SkillDef): Skill {
+        this.name = skl.name
+        this.acp = skl.acp
+        this.ability = skl.ability
+        this.category = skl.category
+        this.untrained = skl.untrained
+
+        return this
+    }
 }
 
 export class ClassLevel {

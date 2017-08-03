@@ -47,7 +47,7 @@ export class Collector {
                 }
             }
 
-            console.log("Comparing " + a.target + " AND " + b.target + " RESULT " + result);
+            // console.log("Comparing " + a.target + " AND " + b.target + " RESULT " + result);
 
             return result
         })

@@ -1,0 +1,16 @@
+.item {
+  position: relative;
+  display: block
+}
+
+.score {
+  width: 3rem;
+}
+
+.text {
+  width: 3rem;
+}
+
+.name {
+  width: 9rem;
+}
